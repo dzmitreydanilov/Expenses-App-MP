@@ -1,24 +1,24 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'shared'
+    spec.name                     = 'network'
     spec.version                  = '1.0'
     spec.homepage                 = 'Link to the Shared Module homepage'
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''
-    spec.summary                  = 'Some description for the Shared Module'
-    spec.vendored_frameworks      = 'build/cocoapods/framework/shared.framework'
+    spec.summary                  = 'Modle which provides base abstract ApiService and Platform specific http clients'
+    spec.vendored_frameworks      = 'build/cocoapods/framework/kmp_network_module.framework'
     spec.libraries                = 'c++'
-    spec.ios.deployment_target = '14.1'
+    spec.ios.deployment_target = '15'
                 
                 
     spec.pod_target_xcconfig = {
-        'KOTLIN_PROJECT_PATH' => ':shared',
-        'PRODUCT_MODULE_NAME' => 'shared',
+        'KOTLIN_PROJECT_PATH' => ':network',
+        'PRODUCT_MODULE_NAME' => 'kmp_network_module',
     }
                 
     spec.script_phases = [
         {
-            :name => 'Build shared',
+            :name => 'Build network',
             :execution_position => :before_compile,
             :shell_path => '/bin/sh',
             :script => <<-SCRIPT
@@ -35,5 +35,5 @@ Pod::Spec.new do |spec|
             SCRIPT
         }
     ]
-    spec.resources = ['build/compose/ios/shared/compose-resources']
+                
 end

@@ -1,4 +1,4 @@
-package com.ddanilov.kmpsandbox
+package com.ddanilov.beerlover
 
 import platform.UIKit.UIDevice
 

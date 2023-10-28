@@ -1,4 +1,4 @@
-package com.ddanilov.kmpsandbox.android
+package com.ddanilov.beerlover.android
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape

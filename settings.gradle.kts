@@ -19,3 +19,4 @@ dependencyResolutionManagement {
 rootProject.name = "KMPSandbox"
 include(":androidApp")
 include(":shared")
+include(":network")
