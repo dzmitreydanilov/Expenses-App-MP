@@ -1,0 +1,219 @@
+[versions]
+jvmTarget = "17"
+compileSDK = "34"
+minSdk = "28"
+
+kotlin = "1.9.10"
+kotlinGradlePlugin = "1.9.10"
+ksp = "1.8.22-1.0.11"
+detekt = "1.23.1"
+
+androidGradlePlugin = "8.1.2"
+androidDesugarJdkLibs = "2.0.3"
+androidxActivity = "1.4.0"
+androidxAppCompat = "1.6.1"
+androidxCore = "1.12.0"
+androidxTestJunitExt = "1.1.5"
+androidxCustomView = "1.0.0-rc01"
+androidxLifecycle = "2.6.2"
+androidxNavigation = "2.7.4"
+androidxCompose = "2023.10.01"
+androidxComposeCompiler = "1.5.3"
+androidxLifecycleCompose = "2.7.0-alpha03"
+androidxBiometric = "1.2.0-alpha05"
+androidxDataStorePreferencesCore = "1.0.0"
+androidxMaterialIconsExtended = "1.5.4"
+androidxMaterial3 = "1.2.0-alpha10"
+androidxPaging = "3.2.1"
+
+kotlinxCoroutines = "1.7.3"
+kotlinxDatetime = "0.4.0"
+kotlinxImmutableCollections = "0.3.5"
+kotlinxSerialization = "1.5.1"
+coroutinesCore = "1.7.3"
+activityKtx = "1.8.0"
+fragmentKtx = "1.6.1"
+
+googleServices = "4.3.15"
+playServices = "4.3.15"
+playServicesCoroutines = "1.7.3"
+playServicesAuth = "20.6.0"
+playServicesWallet = "19.2.0"
+
+firebase = "32.2.3"
+firebase-auth-ktx = "22.1.1"
+
+ktor = "2.3.4"
+okio = "3.5.0"
+
+snapperVersion = "0.2.2"
+
+junit4 = "4.13.2"
+test-resource = "0.4.0"
+turbine = "1.0.0"
+mockk = "1.13.8"
+
+composeActivity = "1.8.0"
+
+coil = "2.3.0"
+
+dataStore = "1.0.0"
+
+decompose = "2.2.0-alpha02"
+
+#GoogleMaps
+composeMaps = "2.15.0"
+playServicesMaps = "18.2.0"
+playServicesLocation = "21.0.1"
+
+#Code analizyng
+espresso-core = "3.5.1"
+material = "1.9.0"
+
+[libraries]
+android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
+
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxCompose" }
+androidx-compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "composeActivity" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-material = { group = "androidx.compose.material", name = "material" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "androidxMaterial3" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+androidx-compose-foundation-layout = { group = "androidx.compose.foundation:foundation-layout", name = "foundation-layout" }
+androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
+androidx-compose-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
+androidx-compose-material-icons = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "androidxMaterialIconsExtended" }
+androidx-compose-animation = { group = "androidx.compose.animation", name = "animation" }
+
+androidx-compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
+androidx-compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "androidxComposeCompiler" }
+
+androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycleCompose" }
+
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
+androidx-lifecycle-viewModel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
+androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidxLifecycle" }
+androidx-lifecycle-viewModel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
+androidx-test-junit-ext = { group = "androidx.test.ext", name = "junit", version.ref = "androidxTestJunitExt" }
+androidx-lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "androidxLifecycle" }
+androidx-biometric = { group = "androidx.biometric", name = "biometric", version.ref = "androidxBiometric" }
+androidx-datastore-pref-core = { group = "androidx.datastore", name = "datastore-preferences-core", version.ref = "androidxDataStorePreferencesCore" }
+
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutinesCore" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesCore" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+kotlinx-coroutines-playServices = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "kotlinxCoroutines" }
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
+kotlinx-collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinxImmutableCollections" }
+kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+
+playServices-gradlePlugin = { group = "com.google.gms", name = "google-services", version.ref = "playServices" }
+
+okio = { group = "com.squareup.okio", name = "okio", version.ref = "okio" }
+
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase" }
+firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebase-auth-ktx" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging" }
+
+scroll-snapper = { group = "dev.chrisbanes.snapper", name = "snapper", version.ref = "snapperVersion" }
+
+test-junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
+
+coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+
+datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "dataStore" }
+
+ktor-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-contentnegotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
+ktor-client-serialization = { group = "io.ktor", name = "ktor-client-serialization", version.ref = "ktor" }
+ktor-serialization = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-android = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
+ktor-android-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
+ktor-ios = { group = "io.ktor", name = "ktor-client-ios", version.ref = "ktor" }
+ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-mock-core = { group = "io.ktor", name = "ktor-client-mock", version.ref = "ktor" }
+
+#Paging
+androidx-compose-paging = { group = "androidx.paging", name = "paging-compose", version.ref = "androidxPaging" }
+androidx-paging-runtime-ktx = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "androidxPaging" }
+
+#Code Analizyin
+detekt-rules-ktlint = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+#Google Maps
+android-compose-maps = { group = "com.google.maps.android", name = "maps-compose", version.ref = "composeMaps" }
+android-compose-utils = { group = "com.google.maps.android", name = "maps-compose-utils", version.ref = "composeMaps" }
+android-compose-widgets = { group = "com.google.maps.android", name = "maps-compose-widgets", version.ref = "composeMaps" }
+playservices-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+playservices-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
+
+# Dependencies of the included build-logic
+android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
+detekt-gradlePlugin = { group = "io.gitlab.arturbosch.detekt", name = "detekt-gradle-plugin", version.ref = "detekt" }
+detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
+
+#Testing
+test-resources = { group = "com.goncalossilva", name = "resources", version.ref = "test-resource" }
+test-turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+test-mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+
+decompose = { group = "com.arkivanov.decompose", name = "decompose", version.ref = "decompose" }
+decompose-extensions-jetpack = { group = "com.arkivanov.decompose", name = "extensions-compose-jetpack", version.ref = "decompose" }
+decompose-extensions-jetbrains = { group = "com.arkivanov.decompose", name = "extensions-compose-jetbrains", version.ref = "decompose" }
+
+[bundles]
+compose = [
+    "androidx-compose-animation",
+    "androidx-compose-ui-tooling",
+    "androidx-compose-ui",
+    "androidx-compose-material3",
+    "androidx-compose-foundation",
+    "androidx-compose-runtime",
+    "androidx-compose-ui-tooling-preview",
+    "androidx-compose-compiler"
+]
+paging-android = [
+    "androidx-compose-paging",
+    "androidx-paging-runtime-ktx"
+]
+
+ktorAndroid = [
+    "ktor-android",
+    "ktor-android-okhttp"
+]
+
+ktorCommon = [
+    "ktor-core",
+    "ktor-logging",
+    "ktor-client-serialization",
+    "ktor-contentnegotiation",
+    "ktor-serialization"
+]
+
+ktorIos = [
+    "ktor-ios"
+]
+
+[plugins]
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+test-resources = { id = "com.goncalossilva.resources", version.ref = "test-resource" }
