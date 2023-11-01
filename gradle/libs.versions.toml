@@ -3,10 +3,12 @@ jvmTarget = "17"
 compileSDK = "34"
 minSdk = "28"
 
-kotlin = "1.9.10"
+kotlin = "1.9.20"
 kotlinGradlePlugin = "1.9.10"
-ksp = "1.8.22-1.0.11"
+ksp = "1.9.20-1.0.14"
 detekt = "1.23.1"
+
+koin = "3.4.3"
 
 androidGradlePlugin = "8.1.2"
 androidDesugarJdkLibs = "2.0.3"
@@ -16,22 +18,21 @@ androidxCore = "1.12.0"
 androidxTestJunitExt = "1.1.5"
 androidxCustomView = "1.0.0-rc01"
 androidxLifecycle = "2.6.2"
-androidxNavigation = "2.7.4"
 androidxCompose = "2023.10.01"
-androidxComposeCompiler = "1.5.3"
-androidxLifecycleCompose = "2.7.0-alpha03"
+androidxComposeCompiler = "1.5.4"
+androidxLifecycleCompose = "2.7.0-beta01"
 androidxBiometric = "1.2.0-alpha05"
 androidxDataStorePreferencesCore = "1.0.0"
 androidxMaterialIconsExtended = "1.5.4"
 androidxMaterial3 = "1.2.0-alpha10"
 androidxPaging = "3.2.1"
 
-compose-multiplatform = "1.5.10-rc02"
+compose-multiplatform = "1.5.10"
 
 kotlinxCoroutines = "1.7.3"
 kotlinxDatetime = "0.4.0"
 kotlinxImmutableCollections = "0.3.5"
-kotlinxSerialization = "1.5.1"
+kotlinxSerialization = "1.6.0"
 coroutinesCore = "1.7.3"
 activityKtx = "1.8.0"
 fragmentKtx = "1.6.1"
@@ -61,7 +62,8 @@ coil = "2.3.0"
 
 dataStore = "1.0.0"
 
-decompose = "2.2.0-alpha02"
+decompose = "2.2.0-compose-experimental-alpha04"
+essenty = "1.3.0-alpha03"
 
 #GoogleMaps
 composeMaps = "2.15.0"
@@ -70,7 +72,6 @@ playServicesLocation = "21.0.1"
 
 #Code analizyng
 espresso-core = "3.5.1"
-material = "1.9.0"
 
 [libraries]
 android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
@@ -80,7 +81,6 @@ androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", versi
 androidx-compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "composeActivity" }
 androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-androidx-compose-material = { group = "androidx.compose.material", name = "material" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "androidxMaterial3" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 androidx-compose-foundation-layout = { group = "androidx.compose.foundation:foundation-layout", name = "foundation-layout" }
@@ -91,7 +91,6 @@ androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
 androidx-compose-material-icons = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "androidxMaterialIconsExtended" }
 androidx-compose-animation = { group = "androidx.compose.animation", name = "animation" }
 
-androidx-compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
 androidx-compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "androidxComposeCompiler" }
 
 androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycleCompose" }
@@ -151,7 +150,6 @@ androidx-paging-runtime-ktx = { group = "androidx.paging", name = "paging-runtim
 #Code Analizyin
 detekt-rules-ktlint = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 #Google Maps
 android-compose-maps = { group = "com.google.maps.android", name = "maps-compose", version.ref = "composeMaps" }
@@ -173,8 +171,12 @@ test-turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "tu
 test-mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 
 decompose = { group = "com.arkivanov.decompose", name = "decompose", version.ref = "decompose" }
-decompose-extensions-jetpack = { group = "com.arkivanov.decompose", name = "extensions-compose-jetpack", version.ref = "decompose" }
-decompose-extensions-jetbrains = { group = "com.arkivanov.decompose", name = "extensions-compose-jetbrains", version.ref = "decompose" }
+decompose-extensions-jetpack = { group = "com.arkivanov.decompose", name = "extensions-compose-jetpack", version = "2.2.0-alpha04" }
+decompose-extensions-jetbrains = { group = "com.arkivanov.decompose", name = "extensions-compose-jetbrains", version = "2.2.0-compose-experimental-alpha04" }
+essenty = { module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty" }
+
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 
 [bundles]
 compose = [
@@ -219,4 +221,7 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 test-resources = { id = "com.goncalossilva.resources", version.ref = "test-resource" }
-compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+
+compose = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+

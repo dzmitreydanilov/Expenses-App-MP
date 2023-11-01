@@ -2,7 +2,7 @@
 plugins {
     kotlin("native.cocoapods")
     id("kmp.library")
-    alias(libs.plugins.compose.multiplatform)
+    kotlin("plugin.serialization")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -12,7 +12,7 @@ kotlin {
     androidTarget {
         compilations.all {
             kotlinOptions {
-                jvmTarget = "1.8"
+                jvmTarget = "17"
             }
         }
     }
@@ -29,12 +29,28 @@ kotlin {
         podfile = project.file("../iosApp/Podfile")
         framework {
             baseName = "shared"
+            isStatic = true
         }
     }
 
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(libs.decompose)
+                implementation(libs.koin.core)
+            }
+        }
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.koin.android)
+                implementation(libs.decompose.extensions.jetpack)
+            }
+        }
+
+        val iosMain by getting {
+            dependencies {
+                api(libs.decompose)
+                api(libs.koin.core)
             }
         }
     }
@@ -44,6 +60,6 @@ android {
     namespace = "com.ddanilov.kmpsandbox"
     compileSdk = 34
     defaultConfig {
-        minSdk = 29
+        minSdk = 28
     }
 }
