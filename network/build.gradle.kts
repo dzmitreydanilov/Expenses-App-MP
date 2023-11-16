@@ -17,7 +17,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(libs.bundles.ktorCommon)
+                api(libs.bundles.ktorCommon)
             }
         }
         val commonTest by getting {

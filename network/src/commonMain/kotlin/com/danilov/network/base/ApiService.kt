@@ -23,11 +23,11 @@ abstract class ApiService(
 
     open val defaultHeaders: StringValues = StringValues.build {}
 
-    protected suspend inline fun <reified T, reified E> get(
+    protected suspend inline fun <reified T> get(
         body: Any? = null,
         contentType: ContentType = ContentType.Application.Json,
         noinline urlBuilder: URLBuilder.(URLBuilder) -> Unit
-    ): Response<T, E> {
+    ): Response<T> {
         return handleResponse {
             httpClient.get(
                 httpRequestBuilder(
@@ -43,7 +43,7 @@ abstract class ApiService(
         body: Any?,
         contentType: ContentType = ContentType.Application.Json,
         noinline urlBuilder: URLBuilder.(URLBuilder) -> Unit
-    ): Response<T, E> {
+    ): Response<T> {
         return handleResponse {
             httpClient.post(
                 httpRequestBuilder(
@@ -59,7 +59,7 @@ abstract class ApiService(
         body: Any?,
         contentType: ContentType = ContentType.Application.Json,
         noinline urlBuilder: URLBuilder.(URLBuilder) -> Unit
-    ): Response<T, E> {
+    ): Response<T> {
         return handleResponse {
             httpClient.put(
                 httpRequestBuilder(
@@ -87,9 +87,9 @@ abstract class ApiService(
         }
     }
 
-    protected suspend inline fun <reified T, reified E> handleResponse(
+    protected suspend inline fun <reified T> handleResponse(
         httpRequest: () -> HttpResponse
-    ): Response<T, E> {
+    ): Response<T> {
         return responseHandler.handle(httpRequest)
     }
 }

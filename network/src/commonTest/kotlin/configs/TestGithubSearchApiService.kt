@@ -15,7 +15,7 @@ internal class TestGithubSearchApiService(
     responseHandler
 ) {
 
-    suspend fun fetchRepositories(): Response<ResponseWrapperSchema, ErrorResponse> {
+    suspend fun fetchRepositories(): Response<ResponseWrapperSchema> {
         return get(
             urlBuilder = {
                 buildUrl(

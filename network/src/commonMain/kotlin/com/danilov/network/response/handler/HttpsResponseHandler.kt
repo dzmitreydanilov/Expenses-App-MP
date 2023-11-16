@@ -20,7 +20,7 @@ abstract class HttpResponseHandler {
      * @param request A lambda function that sends an HTTP request and returns an HttpResponse.
      * @return A Response object containing either a success or error response.
      */
-    suspend inline fun <reified T, reified E> handle(request: () -> HttpResponse): Response<T, E> {
+    suspend inline fun <reified T> handle(request: () -> HttpResponse): Response<T> {
         return try {
             val response = request.invoke().body<T>()
             Response.Success(response)

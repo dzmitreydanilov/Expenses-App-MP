@@ -3,11 +3,12 @@ plugins {
     kotlin("native.cocoapods")
     id("kmp.library")
     kotlin("plugin.serialization")
+    id("co.touchlab.skie") version "0.5.5"
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
-    targetHierarchy.default()
+    applyDefaultHierarchyTemplate()
 
     androidTarget {
         compilations.all {
@@ -38,6 +39,7 @@ kotlin {
             dependencies {
                 implementation(libs.decompose)
                 implementation(libs.koin.core)
+                implementation(project(":network"))
             }
         }
         val androidMain by getting {

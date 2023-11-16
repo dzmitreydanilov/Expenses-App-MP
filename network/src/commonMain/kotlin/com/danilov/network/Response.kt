@@ -7,23 +7,23 @@ package com.danilov.network
  * @param <E> The type of the error response.
  */
 
-sealed class Response<out T, out E> {
+sealed class Response<out T> {
     /**
      * Represents successful network responses (2xx).
      */
-    data class Success<T>(val body: T) : Response<T, Nothing>()
+    data class Success<T>(val body: T) : Response<T>()
 
-    sealed class Error<E> : Response<Nothing, E>() {
+    sealed class Error : Response<Nothing>() {
         /**
          * Represents server errors.
          * @param code HTTP Status code
          * @param errorBody Response body
          * @param errorMessage Custom error message
          */
-        data class HttpError<E>(
+        data class HttpError(
             val code: Int,
             val errorBody: String?
-        ) : Error<E>()
+        ) : Error()
 
         /**
          * Represent SerializationExceptions.
@@ -31,7 +31,7 @@ sealed class Response<out T, out E> {
          */
         data class SerializationError(
             val message: String?,
-        ) : Error<Nothing>()
+        ) : Error()
 
         /**
          * Represent other exceptions.
@@ -39,6 +39,6 @@ sealed class Response<out T, out E> {
          */
         data class GenericError(
             val message: String?,
-        ) : Error<Nothing>()
+        ) : Error()
     }
 }
