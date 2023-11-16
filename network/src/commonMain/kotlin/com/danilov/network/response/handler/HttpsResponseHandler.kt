@@ -28,23 +28,19 @@ abstract class HttpResponseHandler {
             Response.Error.HttpError(
                 code = exception.response.status.value,
                 errorBody = exception.response.body(),
-                errorMessage = "Status Code: ${exception.response.status.value}. Something went wrong.",
             )
         } catch (exception: HttpExceptions) {
             Response.Error.HttpError(
                 code = exception.response.status.value,
                 errorBody = exception.response.body(),
-                errorMessage = exception.message,
             )
         } catch (e: SerializationException) {
             Response.Error.SerializationError(
                 message = e.message,
-                errorMessage = "Something went wrong",
             )
         } catch (e: Exception) {
             Response.Error.GenericError(
-                message = e.message,
-                errorMessage = "Something went wrong",
+                message = e.message
             )
         }
     }

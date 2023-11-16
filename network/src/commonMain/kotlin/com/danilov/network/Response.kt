@@ -22,28 +22,23 @@ sealed class Response<out T, out E> {
          */
         data class HttpError<E>(
             val code: Int,
-            val errorBody: String?,
-            val errorMessage: String?,
+            val errorBody: String?
         ) : Error<E>()
 
         /**
          * Represent SerializationExceptions.
          * @param message Detail exception message
-         * @param errorMessage Formatted error message
          */
         data class SerializationError(
             val message: String?,
-            val errorMessage: String?,
         ) : Error<Nothing>()
 
         /**
          * Represent other exceptions.
          * @param message Detail exception message
-         * @param errorMessage Formatted error message
          */
         data class GenericError(
             val message: String?,
-            val errorMessage: String?,
         ) : Error<Nothing>()
     }
 }
