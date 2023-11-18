@@ -6,13 +6,22 @@ import com.arkivanov.decompose.router.slot.SlotNavigation
 import com.arkivanov.decompose.router.slot.childSlot
 import com.arkivanov.decompose.router.slot.dismiss
 import com.arkivanov.decompose.value.Value
+import com.ddanilov.beerlover.breweries.BreweriesListRepository
+import com.ddanilov.beerlover.breweries.BreweriesViewModel
 import com.ddanilov.beerlover.decompose.brewery.BreweryInfoComponent
 import com.ddanilov.beerlover.decompose.home.SlotConfig
+import com.ddanilov.beerlover.network.BreweriesListApiService
+import io.ktor.client.HttpClient
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 class BreweryListComponent(
     componentContext: ComponentContext
-) : BreweryList, ComponentContext by componentContext {
+) : BreweryList, ComponentContext by componentContext, KoinComponent {
 
+    private val httpClient: BreweriesListApiService by inject()
+    private val vm = BreweriesViewModel(BreweriesListRepository(httpClient))
+    override val state = vm.state
     private val slotNavigation = SlotNavigation<SlotConfig>()
     override val childSlot: Value<ChildSlot<*, BreweryList.SlotChild>> = childSlot(
         source = slotNavigation,

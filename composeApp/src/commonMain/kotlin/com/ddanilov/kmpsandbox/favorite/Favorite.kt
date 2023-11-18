@@ -1,4 +1,4 @@
-package com.ddanilov.composeapp.favorite
+package com.ddanilov.kmpsandbox.favorite
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

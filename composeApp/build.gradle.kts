@@ -61,6 +61,7 @@ kotlin {
                 implementation(libs.bundles.compose)
                 implementation(libs.androidx.compose.activity)
                 implementation(libs.decompose.extensions.jetpack)
+                implementation(libs.koin.android)
             }
         }
 
@@ -79,7 +80,9 @@ android {
     compileSdk = 34
     defaultConfig {
         minSdk = 28
+        applicationId = com.ddanilov.convention.Configs.applicationId
     }
+
 
     defaultConfig.targetSdk = com.ddanilov.convention.Configs.targetSdk
 

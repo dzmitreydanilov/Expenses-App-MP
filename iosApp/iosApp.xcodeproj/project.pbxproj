@@ -11,6 +11,9 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		166B1FF7F2994D3CE8E4BC44 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9181D4E812014DAADF6A7FCC /* Pods_iosApp.framework */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		5A4014722B0811DB00372C92 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4014712B0811DB00372C92 /* FavoriteView.swift */; };
+		5A4014742B0811F700372C92 /* FavoriteStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4014732B0811F700372C92 /* FavoriteStore.swift */; };
+		5A4014762B08E7FC00372C92 /* Koin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4014752B08E7FC00372C92 /* Koin.swift */; };
 		5A6E31BD2B03E78B00F9FE73 /* BreweriesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6E31BC2B03E78B00F9FE73 /* BreweriesApp.swift */; };
 		5A6E31C02B03E8F400F9FE73 /* BottomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6E31BF2B03E8F400F9FE73 /* BottomTabView.swift */; };
 		5A6E31C22B03EC2C00F9FE73 /* RootHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6E31C12B03EC2C00F9FE73 /* RootHolder.swift */; };
@@ -18,7 +21,7 @@
 		5A6E31C62B04256E00F9FE73 /* ObservableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6E31C52B04256E00F9FE73 /* ObservableValue.swift */; };
 		5AD861172B0436AA008AB6B0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD861162B0436AA008AB6B0 /* HomeView.swift */; };
 		5AD861192B043EA0008AB6B0 /* BreweriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD861182B043EA0008AB6B0 /* BreweriesListView.swift */; };
-		5AD8611B2B04459F008AB6B0 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD8611A2B04459F008AB6B0 /* FavoriteView.swift */; };
+		5AD8611B2B04459F008AB6B0 /* FavoriteViewComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD8611A2B04459F008AB6B0 /* FavoriteViewComposeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		094C74AA8889EEF53E0F4839 /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		5A4014712B0811DB00372C92 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		5A4014732B0811F700372C92 /* FavoriteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStore.swift; sourceTree = "<group>"; };
+		5A4014752B08E7FC00372C92 /* Koin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Koin.swift; sourceTree = "<group>"; };
 		5A6E31BC2B03E78B00F9FE73 /* BreweriesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweriesApp.swift; sourceTree = "<group>"; };
 		5A6E31BF2B03E8F400F9FE73 /* BottomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabView.swift; sourceTree = "<group>"; };
 		5A6E31C12B03EC2C00F9FE73 /* RootHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootHolder.swift; sourceTree = "<group>"; };
@@ -33,7 +39,7 @@
 		5A6E31C52B04256E00F9FE73 /* ObservableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableValue.swift; sourceTree = "<group>"; };
 		5AD861162B0436AA008AB6B0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5AD861182B043EA0008AB6B0 /* BreweriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweriesListView.swift; sourceTree = "<group>"; };
-		5AD8611A2B04459F008AB6B0 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		5AD8611A2B04459F008AB6B0 /* FavoriteViewComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewComposeView.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9181D4E812014DAADF6A7FCC /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +74,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5A40146F2B08119600372C92 /* breweries */ = {
+			isa = PBXGroup;
+			children = (
+				5AD861182B043EA0008AB6B0 /* BreweriesListView.swift */,
+			);
+			path = breweries;
+			sourceTree = "<group>";
+		};
+		5A4014702B0811AD00372C92 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				5AD8611A2B04459F008AB6B0 /* FavoriteViewComposeView.swift */,
+				5A4014712B0811DB00372C92 /* FavoriteView.swift */,
+				5A4014732B0811F700372C92 /* FavoriteStore.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
 		5A6E31BE2B03E8DA00F9FE73 /* BottomNav */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,15 +121,16 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				5A4014702B0811AD00372C92 /* Favorites */,
+				5A40146F2B08119600372C92 /* breweries */,
 				5A6E31BE2B03E8DA00F9FE73 /* BottomNav */,
 				5A6E31BC2B03E78B00F9FE73 /* BreweriesApp.swift */,
 				5A6E31C32B0423F000F9FE73 /* StateValue.swift */,
 				5A6E31C12B03EC2C00F9FE73 /* RootHolder.swift */,
 				5A6E31C52B04256E00F9FE73 /* ObservableValue.swift */,
 				5AD861162B0436AA008AB6B0 /* HomeView.swift */,
-				5AD861182B043EA0008AB6B0 /* BreweriesListView.swift */,
-				5AD8611A2B04459F008AB6B0 /* FavoriteView.swift */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
+				5A4014752B08E7FC00372C92 /* Koin.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
@@ -242,8 +267,11 @@
 				5A6E31C02B03E8F400F9FE73 /* BottomTabView.swift in Sources */,
 				5A6E31C62B04256E00F9FE73 /* ObservableValue.swift in Sources */,
 				5A6E31C42B0423F000F9FE73 /* StateValue.swift in Sources */,
+				5A4014762B08E7FC00372C92 /* Koin.swift in Sources */,
+				5A4014742B0811F700372C92 /* FavoriteStore.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
-				5AD8611B2B04459F008AB6B0 /* FavoriteView.swift in Sources */,
+				5AD8611B2B04459F008AB6B0 /* FavoriteViewComposeView.swift in Sources */,
+				5A4014722B0811DB00372C92 /* FavoriteView.swift in Sources */,
 				5A6E31C22B03EC2C00F9FE73 /* RootHolder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

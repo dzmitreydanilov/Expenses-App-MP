@@ -1,7 +1,7 @@
 package com.danilov.network.response.handler
 
 import com.danilov.network.HttpExceptions
-import com.danilov.network.Response
+import com.danilov.network.RestResponse
 import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.statement.HttpResponse
@@ -20,27 +20,27 @@ abstract class HttpResponseHandler {
      * @param request A lambda function that sends an HTTP request and returns an HttpResponse.
      * @return A Response object containing either a success or error response.
      */
-    suspend inline fun <reified T> handle(request: () -> HttpResponse): Response<T> {
+    suspend inline fun <reified T> handle(request: () -> HttpResponse): RestResponse<T> {
         return try {
             val response = request.invoke().body<T>()
-            Response.Success(response)
+            RestResponse.Success(response)
         } catch (exception: ClientRequestException) {
-            Response.Error.HttpError(
+            RestResponse.Error.HttpError(
                 code = exception.response.status.value,
                 errorBody = exception.response.body(),
             )
         } catch (exception: HttpExceptions) {
-            Response.Error.HttpError(
+            RestResponse.Error.HttpError(
                 code = exception.response.status.value,
                 errorBody = exception.response.body(),
             )
         } catch (e: SerializationException) {
-            Response.Error.SerializationError(
-                message = e.message,
+            RestResponse.Error.SerializationError(
+                errorBody  = e.message,
             )
         } catch (e: Exception) {
-            Response.Error.GenericError(
-                message = e.message
+            RestResponse.Error.GenericError(
+                errorBody = e.message
             )
         }
     }

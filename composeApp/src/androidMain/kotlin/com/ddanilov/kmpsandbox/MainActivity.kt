@@ -1,5 +1,6 @@
-package com.ddanilov.composeapp
+package com.ddanilov.kmpsandbox
 
+import android.app.Application
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -8,9 +9,24 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.defaultComponentContext
-import com.ddanilov.beerlover.decompose.home.HomeComponent
 import com.ddanilov.beerlover.decompose.root.RootComponent
-import com.ddanilov.composeapp.theme.AppTheme
+import com.ddanilov.beerlover.initKoin
+import com.ddanilov.kmpsandbox.theme.AppTheme
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+
+class AndroidApp : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+        initKoin(true) {
+            androidContext(this@AndroidApp)
+            androidLogger()
+        }
+    }
+}
+
 
 class MainActivity : ComponentActivity() {
 

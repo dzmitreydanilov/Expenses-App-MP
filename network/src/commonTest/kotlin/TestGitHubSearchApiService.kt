@@ -1,5 +1,5 @@
 import com.goncalossilva.resources.Resource
-import com.danilov.network.Response
+import com.danilov.network.RestResponse
 import com.danilov.network.createHttpClient
 import com.danilov.network.createJson
 import com.danilov.network.response.handler.DefaultHttpResponseHandler
@@ -42,7 +42,7 @@ class GitHubApiMockTest {
         )
         val expected = "react-tetris"
         val results = apiService.fetchRepositories()
-        val result = (results as Response.Success).body.items.first().name
+        val result = (results as RestResponse.Success).body.items.first().name
         assertEquals(expected, result)
     }
 
@@ -62,7 +62,7 @@ class GitHubApiMockTest {
             httpClient, DefaultHttpResponseHandler()
         )
         val response = apiService.fetchRepositories()
-        val result = ((response as Response.Error) as Response.Error.HttpError).code
+        val result = ((response as RestResponse.Error) as RestResponse.Error.HttpError).code
 
         assertEquals(expected, result)
     }

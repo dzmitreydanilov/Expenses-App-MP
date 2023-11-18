@@ -1,5 +1,5 @@
 import com.danilov.network.response.handler.DefaultHttpResponseHandler
-import com.danilov.network.Response
+import com.danilov.network.RestResponse
 import com.danilov.network.createHttpClient
 import com.danilov.network.createJson
 import com.danilov.network.response.validator.DefaultResponseValidator
@@ -31,7 +31,7 @@ internal class GitHubApiServiceExploratoryTest {
     fun `Correctly fetches tetris repositories`(): Unit = runBlocking {
         val expected = "react-tetris"
         val response = apiService.fetchRepositories()
-        val result = (response as Response.Success).body.items.first().name
+        val result = (response as RestResponse.Success).body.items.first().name
 
         assertEquals(expected, result)
     }

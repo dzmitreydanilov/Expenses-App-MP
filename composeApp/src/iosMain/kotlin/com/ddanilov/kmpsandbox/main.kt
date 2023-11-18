@@ -1,11 +1,11 @@
-package com.ddanilov.composeapp
+package com.ddanilov.kmpsandbox
 
 import androidx.compose.ui.window.ComposeUIViewController
 import com.ddanilov.beerlover.decompose.breweries.BreweryList
 import com.ddanilov.beerlover.decompose.favorite.Favorite
-import com.ddanilov.composeapp.breweries.BreweriesList
-import com.ddanilov.composeapp.favorite.FavoriteScreen
-import com.ddanilov.composeapp.theme.AppTheme
+import com.ddanilov.kmpsandbox.breweries.BreweriesList
+import com.ddanilov.kmpsandbox.favorite.FavoriteScreen
+import com.ddanilov.kmpsandbox.theme.AppTheme
 import platform.UIKit.UIViewController
 
 fun BreweriesViewController(component: BreweryList): UIViewController {

@@ -8,6 +8,7 @@ final class RootHolder {
     let root: RootComponent
     
     init() {
+        KoinApplication.start()
         self.lifecycle = LifecycleRegistryKt.LifecycleRegistry()
         
         self.root = RootComponent(

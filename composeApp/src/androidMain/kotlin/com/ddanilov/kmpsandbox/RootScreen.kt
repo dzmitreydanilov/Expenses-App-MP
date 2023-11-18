@@ -1,4 +1,4 @@
-package com.ddanilov.composeapp
+package com.ddanilov.kmpsandbox
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -21,7 +21,7 @@ import com.arkivanov.decompose.extensions.compose.jetpack.stack.animation.stackA
 import com.arkivanov.decompose.extensions.compose.jetpack.subscribeAsState
 import com.ddanilov.beerlover.decompose.root.Root
 import com.ddanilov.beerlover.decompose.root.RootComponent
-import com.ddanilov.composeapp.breweries.BreweriesList
+import com.ddanilov.kmpsandbox.breweries.BreweriesList
 
 
 @Composable

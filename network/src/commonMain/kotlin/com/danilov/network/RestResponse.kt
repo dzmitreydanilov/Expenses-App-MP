@@ -6,39 +6,42 @@ package com.danilov.network
  * @param <T> The type of the successful response body.
  * @param <E> The type of the error response.
  */
+sealed interface RestResponse<out T> {
 
-sealed class Response<out T> {
     /**
      * Represents successful network responses (2xx).
      */
-    data class Success<T>(val body: T) : Response<T>()
+    data class Success<T>(val body: T) : RestResponse<T>
 
-    sealed class Error : Response<Nothing>() {
+    sealed class Error(
+        open val code: Int?,
+        open val errorBody: String?
+    ) : RestResponse<Nothing>{
+
         /**
          * Represents server errors.
          * @param code HTTP Status code
          * @param errorBody Response body
-         * @param errorMessage Custom error message
          */
         data class HttpError(
-            val code: Int,
-            val errorBody: String?
-        ) : Error()
+            override val code: Int?,
+            override val errorBody: String?,
+        ) : Error(code, errorBody)
 
         /**
          * Represent SerializationExceptions.
          * @param message Detail exception message
          */
         data class SerializationError(
-            val message: String?,
-        ) : Error()
+            override val errorBody: String?,
+        ) : Error(null, errorBody)
 
         /**
          * Represent other exceptions.
          * @param message Detail exception message
          */
         data class GenericError(
-            val message: String?,
-        ) : Error()
+            override val errorBody: String?,
+        ) : Error(null, errorBody)
     }
 }

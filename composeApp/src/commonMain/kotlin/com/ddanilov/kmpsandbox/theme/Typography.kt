@@ -1,4 +1,4 @@
-package com.ddanilov.composeapp.theme
+package com.ddanilov.kmpsandbox.theme
 
 
 import androidx.compose.material3.Typography

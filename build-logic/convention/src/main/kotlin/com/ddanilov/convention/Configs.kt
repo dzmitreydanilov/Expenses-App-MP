@@ -1,8 +1,8 @@
 package com.ddanilov.convention
 
 object Configs {
-    const val applicationId = "com.ddanilob.kmpsandbox"
-    const val namespace = "com.ddanilob.kmpsandbox"
+    const val applicationId = "com.ddanilov.kmpsandbox.androidApp"
+    const val namespace = "com.ddanilov.kmpsandbox"
 
 
     const val compileSdk = 34

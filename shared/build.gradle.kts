@@ -31,6 +31,7 @@ kotlin {
         framework {
             baseName = "shared"
             isStatic = true
+            export(libs.koin.core)
         }
     }
 
@@ -38,7 +39,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(libs.decompose)
-                implementation(libs.koin.core)
+                api(libs.koin.core)
                 implementation(project(":network"))
             }
         }
@@ -48,7 +49,6 @@ kotlin {
                 implementation(libs.decompose.extensions.jetpack)
             }
         }
-
         val iosMain by getting {
             dependencies {
                 api(libs.decompose)

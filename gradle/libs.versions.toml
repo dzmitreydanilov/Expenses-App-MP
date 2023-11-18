@@ -185,6 +185,7 @@ compose = [
     "androidx-compose-ui",
     "androidx-compose-material3",
     "androidx-compose-foundation",
+    "androidx-lifecycle-runtime-compose",
     "androidx-compose-runtime",
     "androidx-compose-ui-tooling-preview",
     "androidx-compose-compiler"

@@ -1,7 +1,6 @@
 package configs
 
-import com.danilov.network.ErrorResponse
-import com.danilov.network.Response
+import com.danilov.network.RestResponse
 import com.danilov.network.base.ApiService
 import com.danilov.network.buildUrl
 import com.danilov.network.response.handler.HttpResponseHandler
@@ -15,7 +14,7 @@ internal class TestGithubSearchApiService(
     responseHandler
 ) {
 
-    suspend fun fetchRepositories(): Response<ResponseWrapperSchema> {
+    suspend fun fetchRepositories(): RestResponse<ResponseWrapperSchema> {
         return get(
             urlBuilder = {
                 buildUrl(

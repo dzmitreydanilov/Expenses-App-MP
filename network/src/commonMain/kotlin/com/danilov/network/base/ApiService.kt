@@ -1,6 +1,6 @@
 package com.danilov.network.base
 
-import com.danilov.network.Response
+import com.danilov.network.RestResponse
 import com.danilov.network.response.handler.HttpResponseHandler
 import io.ktor.client.HttpClient
 import io.ktor.client.request.HttpRequestBuilder
@@ -27,7 +27,7 @@ abstract class ApiService(
         body: Any? = null,
         contentType: ContentType = ContentType.Application.Json,
         noinline urlBuilder: URLBuilder.(URLBuilder) -> Unit
-    ): Response<T> {
+    ): RestResponse<T> {
         return handleResponse {
             httpClient.get(
                 httpRequestBuilder(
@@ -43,7 +43,7 @@ abstract class ApiService(
         body: Any?,
         contentType: ContentType = ContentType.Application.Json,
         noinline urlBuilder: URLBuilder.(URLBuilder) -> Unit
-    ): Response<T> {
+    ): RestResponse<T> {
         return handleResponse {
             httpClient.post(
                 httpRequestBuilder(
@@ -59,7 +59,7 @@ abstract class ApiService(
         body: Any?,
         contentType: ContentType = ContentType.Application.Json,
         noinline urlBuilder: URLBuilder.(URLBuilder) -> Unit
-    ): Response<T> {
+    ): RestResponse<T> {
         return handleResponse {
             httpClient.put(
                 httpRequestBuilder(
@@ -89,7 +89,7 @@ abstract class ApiService(
 
     protected suspend inline fun <reified T> handleResponse(
         httpRequest: () -> HttpResponse
-    ): Response<T> {
+    ): RestResponse<T> {
         return responseHandler.handle(httpRequest)
     }
 }
