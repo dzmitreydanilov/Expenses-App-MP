@@ -43,7 +43,7 @@ private struct ChildView: View {
     
     var body: some View {
         switch child {
-        case let child as HomeChild.Breweries: BreweriesListView()
+        case let child as HomeChild.Breweries: BreweriesListView(child.component)
         case let child as HomeChild.Favorites: FavoritesView(component: child.component)
         default: EmptyView()
         }

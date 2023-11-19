@@ -5,7 +5,11 @@ import composeApp
 struct BreweriesListView : View {
     
     @ObservedObject
-    var viewModel: BreweriesListViewModel = BreweriesListViewModel()
+    var viewModel: BreweriesListViewModel
+    
+    init(_ component: BreweryList) {
+        self.viewModel = BreweriesListViewModel(component)
+    }
     
     var body: some View {
         VStack {

@@ -4,23 +4,23 @@ import composeApp
 
 @MainActor
 class BreweriesListViewModel : ObservableObject {
-    
-    private let viewModel: BreweriesViewModel = KoinApplication.inject()
+        
+    let component: BreweryList
     
     @Published
     private(set) var state: BreweriesState = .Initial.shared
     
+    init(_ component: BreweryList) {
+        self.component = component
+    }
+    
     func activate() async {
-        for await state in viewModel.breweriesState {
+        for await state in component.state {
             self.state = state
         }
     }
-    
-    func fetchBreweries() {
-//        viewModel.getBreweriesList()
-    }
-    
-    deinit {
-        self.viewModel.clear()
-    }
+    /// We don't need it, because Decompose Component tight with the The lifecycle of the View
+//    deinit {
+//        self.viewModel.clear()
+//    }
 }

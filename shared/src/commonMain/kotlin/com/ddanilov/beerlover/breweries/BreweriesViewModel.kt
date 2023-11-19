@@ -1,5 +1,6 @@
 package com.ddanilov.beerlover.breweries
 
+import com.arkivanov.essenty.instancekeeper.InstanceKeeper
 import com.ddanilov.beerlover.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -8,14 +9,12 @@ import kotlinx.coroutines.launch
 import kotlin.experimental.ExperimentalObjCName
 import kotlin.native.ObjCName
 
-@OptIn(ExperimentalObjCName::class)
-@ObjCName("BreweriesViewModelDelegate")
 class BreweriesViewModel(
     private val repository: BreweriesListRepository
-) : ViewModel() {
+) : ViewModel(), InstanceKeeper.Instance {
 
     private val _state = MutableStateFlow<BreweriesState>(BreweriesState.Initial)
-    val state = _state.asStateFlow()
+    val breweriesState = _state.asStateFlow()
 
     init {
         getBreweriesList()
@@ -28,10 +27,16 @@ class BreweriesViewModel(
                 .onStart { _state.emit(BreweriesState.Loading) }.collect { result ->
                     result.onSuccess { breweries ->
                         _state.emit(BreweriesState.Loaded(breweries))
+                        println("XXXX getBreweriesList VM")
                     }.onFailure {
                         _state.emit(BreweriesState.Error(it))
                     }
                 }
         }
+    }
+
+    override fun onDestroy() {
+        println("XXXX onDestroy VM")
+        onCleared()
     }
 }
