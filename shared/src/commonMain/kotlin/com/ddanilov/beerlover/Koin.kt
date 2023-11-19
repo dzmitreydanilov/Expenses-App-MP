@@ -13,7 +13,9 @@ fun initKoin(
         modules(
             networkModule(networkLoggingEnabled),
             apiServicesModule,
+            repositoryModule(),
             platformModule(),
+            viewModelModule()
         )
     }
 }

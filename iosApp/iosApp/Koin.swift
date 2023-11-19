@@ -12,7 +12,6 @@ struct LazyKoin<T> {
 }
 
 extension KoinApplication {
-    /// TODO Currently `networkLoggingEnabled` set as true, to be able to see network logs. Later set true/false depending on BuildType
     static let shared = companion.start(networkLoggingEnabled: true)
     
     @discardableResult
@@ -23,7 +22,7 @@ extension KoinApplication {
 
 extension KoinApplication {
     
-    private static let keyPaths: [PartialKeyPath<Koin>] = apiServicePath
+    private static let keyPaths: [PartialKeyPath<Koin>] = apiServicePath + viewModelsPath
     
     static func inject<T>() -> T {
         shared.inject()
@@ -43,5 +42,9 @@ extension KoinApplication {
     
     private static let apiServicePath: [PartialKeyPath<Koin>] = [
         \.breweriesListApiService,
+    ]
+    
+    private static let viewModelsPath: [PartialKeyPath<Koin>] = [
+        \.breweriesViewModel,
     ]
 }

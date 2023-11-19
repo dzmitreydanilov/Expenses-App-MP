@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.multiplatform)
     kotlin("native.cocoapods")
     id("kotlin.detekt")
+    id("co.touchlab.skie") version "0.5.5"
 }
 
 kotlin {
@@ -39,7 +40,7 @@ kotlin {
         version = "1.0.0"
         summary = "Compose application framework"
         homepage = "empty"
-        ios.deploymentTarget = "14.1"
+        ios.deploymentTarget = "15.0"
         podfile = project.file("../iosApp/Podfile")
     }
 

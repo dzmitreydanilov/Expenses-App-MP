@@ -3,7 +3,6 @@ plugins {
     kotlin("native.cocoapods")
     id("kmp.library")
     kotlin("plugin.serialization")
-    id("co.touchlab.skie") version "0.5.5"
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)

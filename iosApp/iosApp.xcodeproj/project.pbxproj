@@ -20,8 +20,10 @@
 		5A6E31C42B0423F000F9FE73 /* StateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6E31C32B0423F000F9FE73 /* StateValue.swift */; };
 		5A6E31C62B04256E00F9FE73 /* ObservableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6E31C52B04256E00F9FE73 /* ObservableValue.swift */; };
 		5AD861172B0436AA008AB6B0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD861162B0436AA008AB6B0 /* HomeView.swift */; };
-		5AD861192B043EA0008AB6B0 /* BreweriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD861182B043EA0008AB6B0 /* BreweriesListView.swift */; };
+		5AD861192B043EA0008AB6B0 /* BreweriesListComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD861182B043EA0008AB6B0 /* BreweriesListComposeView.swift */; };
 		5AD8611B2B04459F008AB6B0 /* FavoriteViewComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD8611A2B04459F008AB6B0 /* FavoriteViewComposeView.swift */; };
+		5AF8A0862B0A2E9E00D859E5 /* BreweriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF8A0852B0A2E9E00D859E5 /* BreweriesListView.swift */; };
+		5AF8A0882B0A32E400D859E5 /* BreweriesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF8A0872B0A32E400D859E5 /* BreweriesListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +40,10 @@
 		5A6E31C32B0423F000F9FE73 /* StateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateValue.swift; sourceTree = "<group>"; };
 		5A6E31C52B04256E00F9FE73 /* ObservableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableValue.swift; sourceTree = "<group>"; };
 		5AD861162B0436AA008AB6B0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		5AD861182B043EA0008AB6B0 /* BreweriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweriesListView.swift; sourceTree = "<group>"; };
+		5AD861182B043EA0008AB6B0 /* BreweriesListComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweriesListComposeView.swift; sourceTree = "<group>"; };
 		5AD8611A2B04459F008AB6B0 /* FavoriteViewComposeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewComposeView.swift; sourceTree = "<group>"; };
+		5AF8A0852B0A2E9E00D859E5 /* BreweriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweriesListView.swift; sourceTree = "<group>"; };
+		5AF8A0872B0A32E400D859E5 /* BreweriesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweriesListViewModel.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9181D4E812014DAADF6A7FCC /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,7 +81,9 @@
 		5A40146F2B08119600372C92 /* breweries */ = {
 			isa = PBXGroup;
 			children = (
-				5AD861182B043EA0008AB6B0 /* BreweriesListView.swift */,
+				5AD861182B043EA0008AB6B0 /* BreweriesListComposeView.swift */,
+				5AF8A0852B0A2E9E00D859E5 /* BreweriesListView.swift */,
+				5AF8A0872B0A32E400D859E5 /* BreweriesListViewModel.swift */,
 			);
 			path = breweries;
 			sourceTree = "<group>";
@@ -262,7 +268,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A6E31BD2B03E78B00F9FE73 /* BreweriesApp.swift in Sources */,
-				5AD861192B043EA0008AB6B0 /* BreweriesListView.swift in Sources */,
+				5AF8A0862B0A2E9E00D859E5 /* BreweriesListView.swift in Sources */,
+				5AD861192B043EA0008AB6B0 /* BreweriesListComposeView.swift in Sources */,
 				5AD861172B0436AA008AB6B0 /* HomeView.swift in Sources */,
 				5A6E31C02B03E8F400F9FE73 /* BottomTabView.swift in Sources */,
 				5A6E31C62B04256E00F9FE73 /* ObservableValue.swift in Sources */,
@@ -271,6 +278,7 @@
 				5A4014742B0811F700372C92 /* FavoriteStore.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				5AD8611B2B04459F008AB6B0 /* FavoriteViewComposeView.swift in Sources */,
+				5AF8A0882B0A32E400D859E5 /* BreweriesListViewModel.swift in Sources */,
 				5A4014722B0811DB00372C92 /* FavoriteView.swift in Sources */,
 				5A6E31C22B03EC2C00F9FE73 /* RootHolder.swift in Sources */,
 			);
@@ -417,6 +425,7 @@
 				ENABLE_PREVIEWS = YES;
 				EXCLUDED_ARCHS = arm64;
 				INFOPLIST_FILE = iosApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -437,6 +446,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

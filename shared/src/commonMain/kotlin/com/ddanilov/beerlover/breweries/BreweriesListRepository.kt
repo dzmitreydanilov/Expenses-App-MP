@@ -17,6 +17,7 @@ class BreweriesListRepository(
         return flow {
             val breweries = apiService.getBreweryList()
             emit(breweries)
+            println("XXXX getBreweriesList REPO ${this.hashCode()}")
         }.onStart { delay(500) }
             .map { response ->
                 if (response is RestResponse.Success) {
