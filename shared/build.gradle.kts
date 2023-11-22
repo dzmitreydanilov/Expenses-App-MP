@@ -2,6 +2,8 @@
 plugins {
     id("kmp.library")
     kotlin("plugin.serialization")
+    id("com.google.devtools.ksp") version "1.9.20-1.0.14"
+    id("com.rickclephas.kmp.nativecoroutines") version "1.0.0-ALPHA-21"
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -20,7 +22,6 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
-
     listOf(
         iosX64(),
         iosArm64(),
@@ -34,20 +35,25 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting {
+        kotlin.sourceSets.all {
+            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
+        }
+
+
+       commonMain {
             dependencies {
                 implementation(libs.decompose)
                 api(libs.koin.core)
                 implementation(project(":network"))
             }
         }
-        val androidMain by getting {
+       androidMain {
             dependencies {
                 implementation(libs.koin.android)
                 implementation(libs.decompose.extensions.jetpack)
             }
         }
-        val iosMain by getting {
+       iosMain {
             dependencies {
                 api(libs.decompose)
                 api(libs.koin.core)

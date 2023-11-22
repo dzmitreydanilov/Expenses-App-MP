@@ -8,21 +8,21 @@ struct BreweriesListView : View {
     var viewModel: BreweriesListViewModel
     
     init(_ component: BreweryList) {
-        self.viewModel = BreweriesListViewModel(component)
+        self.viewModel = BreweriesListViewModel()
     }
     
     var body: some View {
         VStack {
             switch viewModel.state {
-            case  let state as BreweriesState.Loading: ProgressView()
-            case let state as BreweriesState.Loaded: BreweriesListContent(state, false)
-            case let state as BreweriesState.Error: BreweriesListContent(state, true)
-            case let state as BreweriesState.Tick: BreweriesListContent(state, false)
-            default: EmptyView()
+            case let _ as BreweriesState.Loading: ProgressView()
+            default: BreweriesListContent(state: viewModel.state, isError: viewModel.isErrorState(), btnAction: viewModel.getBreweriesListWithError)
             }
+        }.refreshable {
+            viewModel.refreshBrewerylist()
         }
-        .onAppear{
-//            viewModel.collectLiveUpdates()
+        .onAppear {
+            viewModel.getBreweriesList()
+            viewModel.collectLiveUpdates()
         }
         .task {
             await viewModel.activate()
@@ -36,28 +36,37 @@ private struct BreweriesListContent : View {
     var state: BreweriesState
     
     @State
-    var isError = true
+    var isError: Bool
     
-    init(_ breweries: BreweriesState, _ isError: Bool) {
-        self.state = breweries
-        self.isError = isError
-    }
+    let btnAction: () -> Void
     
     var body: some View {
-        List {
-            ForEach(state.breweries, id: \.name) { brewery in
-                BreweryItemView(brewery)
+        VStack {
+            List {
+                ForEach(state.breweries, id: \.name) { brewery in
+                    BreweryItemView(brewery)
+                }
             }
-        }.alert(isPresented: $isError, content: {
-            Alert(
-                title: Text("Error"),
-                message: Text("Something happaned"),
-                dismissButton: .default(Text("OK"))
+            .alert(isPresented: $isError, content: {
+                Alert(
+                    title: Text("Error"),
+                    message: Text("Something happaned"),
+                    dismissButton: .default(Text("OK"))
+                )
+            })
+            
+            HStack(
+                content: {
+                    Button(
+                        action: {
+                            btnAction()
+                        },
+                        label: { Text("Generate Error State") }
+                    )
+                }
             )
-        })
+        }
     }
-    
-    
 }
 
 private struct BreweryItemView : View {
