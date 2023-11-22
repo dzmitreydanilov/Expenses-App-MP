@@ -21,7 +21,6 @@ androidxLifecycle = "2.6.2"
 androidxCompose = "2023.10.01"
 androidxComposeCompiler = "1.5.4"
 androidxLifecycleCompose = "2.7.0-beta01"
-androidxBiometric = "1.2.0-alpha05"
 androidxDataStorePreferencesCore = "1.0.0"
 androidxMaterialIconsExtended = "1.5.4"
 androidxMaterial3 = "1.2.0-alpha10"
@@ -38,18 +37,9 @@ activityKtx = "1.8.0"
 fragmentKtx = "1.6.1"
 
 googleServices = "4.3.15"
-playServices = "4.3.15"
-playServicesCoroutines = "1.7.3"
-playServicesAuth = "20.6.0"
-playServicesWallet = "19.2.0"
-
-firebase = "32.2.3"
-firebase-auth-ktx = "22.1.1"
 
 ktor = "2.3.4"
 okio = "3.5.0"
-
-snapperVersion = "0.2.2"
 
 junit4 = "4.13.2"
 test-resource = "0.4.0"
@@ -58,20 +48,10 @@ mockk = "1.13.8"
 
 composeActivity = "1.8.0"
 
-coil = "2.3.0"
-
 dataStore = "1.0.0"
 
 decompose = "2.2.0-compose-experimental-alpha04"
 essenty = "1.3.0-alpha03"
-
-#GoogleMaps
-composeMaps = "2.15.0"
-playServicesMaps = "18.2.0"
-playServicesLocation = "21.0.1"
-
-#Code analizyng
-espresso-core = "3.5.1"
 
 [libraries]
 android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
@@ -103,32 +83,19 @@ androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecyc
 androidx-lifecycle-viewModel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
 androidx-test-junit-ext = { group = "androidx.test.ext", name = "junit", version.ref = "androidxTestJunitExt" }
 androidx-lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "androidxLifecycle" }
-androidx-biometric = { group = "androidx.biometric", name = "biometric", version.ref = "androidxBiometric" }
 androidx-datastore-pref-core = { group = "androidx.datastore", name = "datastore-preferences-core", version.ref = "androidxDataStorePreferencesCore" }
 
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutinesCore" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesCore" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
-kotlinx-coroutines-playServices = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "kotlinxCoroutines" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
 kotlinx-collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinxImmutableCollections" }
 kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 
-playServices-gradlePlugin = { group = "com.google.gms", name = "google-services", version.ref = "playServices" }
-
 okio = { group = "com.squareup.okio", name = "okio", version.ref = "okio" }
 
-firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase" }
-firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebase-auth-ktx" }
-firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging" }
-
-scroll-snapper = { group = "dev.chrisbanes.snapper", name = "snapper", version.ref = "snapperVersion" }
-
 test-junit4 = { group = "junit", name = "junit", version.ref = "junit4" }
-
-coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
-coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 
 datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "dataStore" }
 
@@ -143,20 +110,8 @@ ktor-ios = { group = "io.ktor", name = "ktor-client-ios", version.ref = "ktor" }
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-mock-core = { group = "io.ktor", name = "ktor-client-mock", version.ref = "ktor" }
 
-#Paging
-androidx-compose-paging = { group = "androidx.paging", name = "paging-compose", version.ref = "androidxPaging" }
-androidx-paging-runtime-ktx = { group = "androidx.paging", name = "paging-runtime-ktx", version.ref = "androidxPaging" }
-
 #Code Analizyin
 detekt-rules-ktlint = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
-
-#Google Maps
-android-compose-maps = { group = "com.google.maps.android", name = "maps-compose", version.ref = "composeMaps" }
-android-compose-utils = { group = "com.google.maps.android", name = "maps-compose-utils", version.ref = "composeMaps" }
-android-compose-widgets = { group = "com.google.maps.android", name = "maps-compose-widgets", version.ref = "composeMaps" }
-playservices-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
-playservices-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
@@ -189,10 +144,6 @@ compose = [
     "androidx-compose-runtime",
     "androidx-compose-ui-tooling-preview",
     "androidx-compose-compiler"
-]
-paging-android = [
-    "androidx-compose-paging",
-    "androidx-paging-runtime-ktx"
 ]
 
 ktorAndroid = [
