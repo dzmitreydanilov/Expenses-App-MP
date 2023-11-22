@@ -29,7 +29,7 @@ class BreweriesViewModel(
                         _state.emit(
                             BreweriesState.Error(
                                 error = it,
-                                isErrorPopup = true,
+                                isErrorPopup = _state.value.isErrorPopup,
                                 breweries = _state.value.breweries
                             )
                         )
@@ -41,11 +41,11 @@ class BreweriesViewModel(
     fun getBreweriesListWithError() {
         scope.launch {
             repository.getBreweriesListWithError(itemsOnPage = 50)
-                .onStart { _state.emit(BreweriesState.Loading(_state.value.breweries)) }
                 .collect { result ->
                     result.onSuccess { breweries ->
                         _state.emit(BreweriesState.Loaded(breweries))
                     }.onFailure {
+                        println("XXXX ERROR")
                         _state.emit(
                             BreweriesState.Error(
                                 error = it,

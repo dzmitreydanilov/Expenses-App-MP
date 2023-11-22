@@ -23,12 +23,12 @@ class FavoriteViewModel : ObservableObject {
     
     @MainActor
     func getBrewery() async {
-//        do {
-//         let breweryState =  try await asyncFunction(for: viewModel.fetchFavoriteBrewery())
-//            self.state = breweryState
-//        } catch {
-//            self.state = FavoriteBreweryState.Error(error: KotlinThrowable(message: error.localizedDescription))
-//        }
+        do {
+            let breweryState = try await asyncFunction(for: viewModel.fetchFavoriteBreweryById())
+            self.state = breweryState
+        } catch {
+            self.state = FavoriteBreweryState.Error(error: KotlinThrowable(message: error.localizedDescription))
+        }
     }
     
     deinit {

@@ -28,8 +28,9 @@ class BreweriesListRepository(
     fun getBreweriesListWithError(itemsOnPage: Int): Flow<Result<List<Brewery>>> {
         return flow {
             val breweries = apiService.getBreweryList()
-            emit(breweries)
             throw Exception("TEST EXCEPTION")
+            emit(breweries)
+
         }
             .onStart { delay(500) }
             .toResult()
