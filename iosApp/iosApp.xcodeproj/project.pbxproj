@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,12 +23,14 @@
 		5AD8611B2B04459F008AB6B0 /* FavoriteViewComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD8611A2B04459F008AB6B0 /* FavoriteViewComposeView.swift */; };
 		5AF8A0862B0A2E9E00D859E5 /* BreweriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF8A0852B0A2E9E00D859E5 /* BreweriesListView.swift */; };
 		5AF8A0882B0A32E400D859E5 /* BreweriesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF8A0872B0A32E400D859E5 /* BreweriesListViewModel.swift */; };
+		B43CD667513882609649A541 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C8A5BFBF229388A016395F /* Pods_iosApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		48C8A5BFBF229388A016395F /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A4014712B0811DB00372C92 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		5A4014732B0811F700372C92 /* FavoriteStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStore.swift; sourceTree = "<group>"; };
 		5A4014752B08E7FC00372C92 /* Koin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Koin.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B43CD667513882609649A541 /* Pods_iosApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +148,7 @@
 		F49A9EAE54C582FEA887C714 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				48C8A5BFBF229388A016395F /* Pods_iosApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

@@ -2,10 +2,11 @@ import Foundation
 import SwiftUI
 import composeApp
 
-@MainActor
 class BreweriesListViewModel : ObservableObject {
-        
+    
     let component: BreweryList
+    
+    let viewmodel: BreweriesViewModel = KoinApplication.inject()
     
     @Published
     private(set) var state: BreweriesState = .Initial.shared
@@ -14,13 +15,19 @@ class BreweriesListViewModel : ObservableObject {
         self.component = component
     }
     
+    @MainActor
     func activate() async {
-        for await state in component.state {
+        for await state in viewmodel.breweriesState {
             self.state = state
         }
     }
-    /// We don't need it, because Decompose Component tight with the The lifecycle of the View
-//    deinit {
-//        self.viewModel.clear()
-//    }
+    
+    // Just call func, that under the hood starts coroutines, for example listening for live updates
+    func collectLiveUpdates() {
+        viewmodel.liveUpdate()
+    }
+    
+    deinit {
+        self.viewmodel.clear()
+    }
 }

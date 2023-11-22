@@ -22,15 +22,15 @@ fun BreweriesList(
     component: BreweryList,
     modifier: Modifier = Modifier
 ) {
-    val state by component.state.collectAsState()
+//    val state by component.state.collectAsState()
     LazyColumn(
         modifier = modifier
             .fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(30.dp),
     ) {
-        items(state.breweries) {
-            Brewery(it)
-        }
+//        items(state.breweries) {
+//            Brewery(it)
+//        }
     }
 }
 

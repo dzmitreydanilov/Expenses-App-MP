@@ -8,6 +8,7 @@ import com.arkivanov.decompose.router.slot.dismiss
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.instancekeeper.InstanceKeeper
 import com.arkivanov.essenty.instancekeeper.getOrCreate
+import com.arkivanov.essenty.lifecycle.Lifecycle
 import com.ddanilov.beerlover.breweries.BreweriesListRepository
 import com.ddanilov.beerlover.breweries.BreweriesState
 import com.ddanilov.beerlover.breweries.BreweriesViewModel
@@ -22,11 +23,21 @@ class BreweryListComponent(
     componentContext: ComponentContext
 ) : BreweryList, ComponentContext by componentContext, KoinComponent {
 
+
+//    init {
+//        lifecycle.subscribe(
+//        object : Lifecycle.Callbacks {
+//            override fun onDestroy() {
+//                super.onDestroy()
+//                vm.onDestroy()
+//            }
+//                /* Component created */
+//
+//        })
+//    }
     private val httpClient: BreweriesListApiService by inject()
-    private val vm = instanceKeeper.getOrCreate {
-        BreweriesViewModel(BreweriesListRepository(httpClient))
-    }
-    override val state = vm.breweriesState
+//    private val vm = BreweriesViewModel(BreweriesListRepository(httpClient))
+//    override val state = vm.breweriesState
     private val slotNavigation = SlotNavigation<SlotConfig>()
     override val childSlot: Value<ChildSlot<*, BreweryList.SlotChild>> = childSlot(
         source = slotNavigation,

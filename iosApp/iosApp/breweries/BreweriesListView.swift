@@ -14,10 +14,15 @@ struct BreweriesListView : View {
     var body: some View {
         VStack {
             switch viewModel.state {
-            case  _ as BreweriesState.Loading: ProgressView()
-            case let state as BreweriesState.Loaded: BreweriesListContent(state.breweries)
+            case  let state as BreweriesState.Loading: ProgressView()
+            case let state as BreweriesState.Loaded: BreweriesListContent(state, false)
+            case let state as BreweriesState.Error: BreweriesListContent(state, true)
+            case let state as BreweriesState.Tick: BreweriesListContent(state, false)
             default: EmptyView()
             }
+        }
+        .onAppear{
+//            viewModel.collectLiveUpdates()
         }
         .task {
             await viewModel.activate()
@@ -27,19 +32,32 @@ struct BreweriesListView : View {
 
 private struct BreweriesListContent : View {
     
-    let breweries: [Brewery]
+    @State
+    var state: BreweriesState
     
-    init(_ breweries: [Brewery]) {
-        self.breweries = breweries
+    @State
+    var isError = true
+    
+    init(_ breweries: BreweriesState, _ isError: Bool) {
+        self.state = breweries
+        self.isError = isError
     }
     
     var body: some View {
         List {
-            ForEach(breweries, id: \.name) { brewery in
+            ForEach(state.breweries, id: \.name) { brewery in
                 BreweryItemView(brewery)
             }
-        }
+        }.alert(isPresented: $isError, content: {
+            Alert(
+                title: Text("Error"),
+                message: Text("Something happaned"),
+                dismissButton: .default(Text("OK"))
+            )
+        })
     }
+    
+    
 }
 
 private struct BreweryItemView : View {

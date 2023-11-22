@@ -18,6 +18,11 @@ sealed class BreweriesState(
         override val breweries: List<Brewery>
     ) : BreweriesState(breweries)
 
+    data class Tick(
+        val tickValue: String,
+        override val breweries: List<Brewery>
+    ) : BreweriesState(breweries)
+
     data class Error(
         val error: Throwable
     ) : BreweriesState(emptyList())

@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 
 interface BreweryList {
 
-    val state: StateFlow<BreweriesState>
+//    val state: StateFlow<BreweriesState>
     val childSlot: Value<ChildSlot<*, SlotChild>>
 
     sealed class SlotChild {
