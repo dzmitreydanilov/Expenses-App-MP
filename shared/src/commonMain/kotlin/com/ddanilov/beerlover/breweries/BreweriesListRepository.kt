@@ -15,6 +15,7 @@ class BreweriesListRepository(
     private val apiService: BreweriesListApiService
 ) {
 
+    @NativeCoroutinesIgnore
     fun getBreweriesList(itemsOnPage: Int): Flow<Result<List<Brewery>>> {
         return flow {
             val breweries = apiService.getBreweryList()
@@ -25,12 +26,12 @@ class BreweriesListRepository(
             .catch { emit(Result.failure(it)) }
     }
 
+    @NativeCoroutinesIgnore
     fun getBreweriesListWithError(itemsOnPage: Int): Flow<Result<List<Brewery>>> {
         return flow {
             val breweries = apiService.getBreweryList()
             throw Exception("TEST EXCEPTION")
             emit(breweries)
-
         }
             .onStart { delay(500) }
             .toResult()

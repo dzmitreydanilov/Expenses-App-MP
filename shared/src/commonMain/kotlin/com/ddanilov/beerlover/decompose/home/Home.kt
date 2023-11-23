@@ -21,5 +21,6 @@ interface Home {
         class Breweries(val component: BreweryList) : Child()
 
         class Favorites(val component: Favorite) : Child()
+        class BreweryDetails(val id: String) : Child()
     }
 }

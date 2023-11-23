@@ -45,7 +45,6 @@ class BreweriesViewModel(
                     result.onSuccess { breweries ->
                         _state.emit(BreweriesState.Loaded(breweries))
                     }.onFailure {
-                        println("XXXX ERROR")
                         _state.emit(
                             BreweriesState.Error(
                                 error = it,

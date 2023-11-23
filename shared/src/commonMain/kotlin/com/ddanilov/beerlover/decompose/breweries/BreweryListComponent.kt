@@ -20,21 +20,10 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 class BreweryListComponent(
-    componentContext: ComponentContext
+    componentContext: ComponentContext,
+    private val onNavigateToBreweryDetails: (String) -> Unit
 ) : BreweryList, ComponentContext by componentContext, KoinComponent {
 
-
-//    init {
-//        lifecycle.subscribe(
-//        object : Lifecycle.Callbacks {
-//            override fun onDestroy() {
-//                super.onDestroy()
-//                vm.onDestroy()
-//            }
-//                /* Component created */
-//
-//        })
-//    }
     private val httpClient: BreweriesListApiService by inject()
 //    private val vm = BreweriesViewModel(BreweriesListRepository(httpClient))
 //    override val state = vm.breweriesState
@@ -45,6 +34,10 @@ class BreweryListComponent(
         handleBackButton = true,
         childFactory = ::createChildSlot
     )
+
+    override fun navigateBreweryDetails(id: String) {
+        onNavigateToBreweryDetails(id)
+    }
 
     private fun createChildSlot(
         config: SlotConfig,

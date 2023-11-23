@@ -11,6 +11,8 @@ interface BreweryList {
 //    val state: StateFlow<BreweriesState>
     val childSlot: Value<ChildSlot<*, SlotChild>>
 
+    fun navigateBreweryDetails(id: String)
+
     sealed class SlotChild {
         class BreweryInfo(val component: BreweryInfoComponent) : SlotChild()
     }

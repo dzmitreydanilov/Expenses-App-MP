@@ -47,5 +47,6 @@ extension KoinApplication {
     private static let viewModelsPath: [PartialKeyPath<Koin>] = [
         \.breweriesViewModel,
          \.favoriteBreweryViewModel,
+         \.breweryDetailsViewModel
     ]
 }

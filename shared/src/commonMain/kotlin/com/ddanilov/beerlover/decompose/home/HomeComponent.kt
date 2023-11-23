@@ -6,6 +6,7 @@ import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
+import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.value.Value
 import com.ddanilov.beerlover.decompose.breweries.BreweryListComponent
 import com.ddanilov.beerlover.decompose.favorite.FavoriteComponent
@@ -16,7 +17,6 @@ class HomeComponent(
 ) : Home, ComponentContext by componentContext {
 
     private val navigation = StackNavigation<HomeScreenConfig>()
-
     override val stack: Value<ChildStack<*, Home.Child>> = childStack(
         source = navigation,
         serializer = HomeScreenConfig.serializer(),
@@ -31,6 +31,10 @@ class HomeComponent(
         }
     }
 
+    private fun navigateBreweryDetails(id: String) {
+        navigation.push(HomeScreenConfig.BreweryDetail(id))
+    }
+
     private fun child(
         config: HomeScreenConfig,
         componentContext: ComponentContext
@@ -38,7 +42,10 @@ class HomeComponent(
         return when (config) {
             is HomeScreenConfig.BreweriesList -> {
                 Home.Child.Breweries(
-                    BreweryListComponent(componentContext = componentContext)
+                    BreweryListComponent(
+                        componentContext = componentContext,
+                        onNavigateToBreweryDetails = ::navigateBreweryDetails
+                    )
                 )
             }
 
@@ -46,6 +53,10 @@ class HomeComponent(
                 Home.Child.Favorites(
                     FavoriteComponent(componentContext = componentContext)
                 )
+            }
+
+            is HomeScreenConfig.BreweryDetail -> {
+                Home.Child.BreweryDetails(config.id)
             }
         }
     }
@@ -63,6 +74,9 @@ private sealed interface HomeScreenConfig {
 
     @Serializable
     data object Favorite : HomeScreenConfig
+
+    @Serializable
+    data class BreweryDetail(val id: String) : HomeScreenConfig
 }
 
 @Serializable

@@ -2,6 +2,7 @@ package com.ddanilov.beerlover
 
 import com.danilov.network.httpEngine
 import com.ddanilov.beerlover.breweries.BreweriesViewModel
+import com.ddanilov.beerlover.breweries.details.BreweryDetailsViewModel
 import com.ddanilov.beerlover.breweries.favorite.FavoriteBreweryViewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.dsl.module
@@ -14,5 +15,9 @@ actual fun platformModule() = module {
     }
     single {
         FavoriteBreweryViewModel(get())
+    }
+
+    factory {
+        BreweryDetailsViewModel(get())
     }
 }

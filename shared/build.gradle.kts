@@ -36,15 +36,16 @@ kotlin {
 
     sourceSets {
         kotlin.sourceSets.all {
+            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
             languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
         }
-
 
        commonMain {
             dependencies {
                 implementation(libs.decompose)
                 api(libs.koin.core)
                 implementation(project(":network"))
+                api("com.rickclephas.kmm:kmm-viewmodel-core:1.0.0-ALPHA-15")
             }
         }
        androidMain {

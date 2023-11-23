@@ -7,15 +7,23 @@ struct BreweriesListView : View {
     @ObservedObject
     var viewModel: BreweriesListViewModel
     
+    let component: BreweryList
+    
     init(_ component: BreweryList) {
         self.viewModel = BreweriesListViewModel()
+        self.component = component
     }
     
     var body: some View {
         VStack {
             switch viewModel.state {
             case let _ as BreweriesState.Loading: ProgressView()
-            default: BreweriesListContent(state: viewModel.state, isError: viewModel.isErrorState(), btnAction: viewModel.getBreweriesListWithError)
+            default: BreweriesListContent(
+                state: viewModel.state,
+                isError: viewModel.isErrorState(),
+                btnAction: viewModel.getBreweriesListWithError,
+                navigateToBreweryDetails: component.navigateBreweryDetails
+            )
             }
         }.refreshable {
             viewModel.refreshBrewerylist()
@@ -40,11 +48,15 @@ private struct BreweriesListContent : View {
     
     let btnAction: () -> Void
     
+    let navigateToBreweryDetails: (String) -> Void
+    
     var body: some View {
         VStack {
             List {
                 ForEach(state.breweries, id: \.name) { brewery in
-                    BreweryItemView(brewery)
+                    BreweryItemView(brewery).onTapGesture {
+                        navigateToBreweryDetails(brewery.name ?? "")
+                    }
                 }
             }
             .alert(isPresented: $isError, content: {
