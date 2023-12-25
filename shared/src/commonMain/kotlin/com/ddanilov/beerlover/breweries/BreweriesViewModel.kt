@@ -1,6 +1,6 @@
 package com.ddanilov.beerlover.breweries
 
-import com.ddanilov.beerlover.ViewModel
+import com.ddanilov.beerlover.DecomposeViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class BreweriesViewModel(
     private val repository: BreweriesListRepository
-) : ViewModel() {
+) : DecomposeViewModel() {
 
     private val _state = MutableStateFlow<BreweriesState>(BreweriesState.Initial)
     val breweriesState = _state.asStateFlow()
@@ -19,7 +19,7 @@ class BreweriesViewModel(
     }
 
     fun getBreweriesList() {
-        scope.launch {
+        coroutineScope.launch {
             repository.getBreweriesList(itemsOnPage = 50)
                 .onStart { _state.emit(BreweriesState.Loading(_state.value.breweries)) }
                 .collect { result ->
@@ -39,7 +39,7 @@ class BreweriesViewModel(
     }
 
     fun getBreweriesListWithError() {
-        scope.launch {
+        coroutineScope.launch {
             repository.getBreweriesListWithError(itemsOnPage = 50)
                 .collect { result ->
                     result.onSuccess { breweries ->
@@ -59,7 +59,7 @@ class BreweriesViewModel(
 
     fun collectLiveUpdates() {
         var counter = 0
-        scope.launch {
+        coroutineScope.launch {
             while (true) {
                 delay(2_000)
                 _state.emit(

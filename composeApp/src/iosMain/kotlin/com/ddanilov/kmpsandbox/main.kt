@@ -1,7 +1,7 @@
 package com.ddanilov.kmpsandbox
 
 import androidx.compose.ui.window.ComposeUIViewController
-import com.ddanilov.beerlover.decompose.breweries.BreweryList
+import com.ddanilov.beerlover.decompose.expenseslist.BreweryList
 import com.ddanilov.beerlover.decompose.favorite.Favorite
 import com.ddanilov.kmpsandbox.breweries.BreweriesList
 import com.ddanilov.kmpsandbox.favorite.FavoriteScreen

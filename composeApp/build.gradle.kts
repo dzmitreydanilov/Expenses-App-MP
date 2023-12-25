@@ -7,34 +7,16 @@ plugins {
     alias(libs.plugins.multiplatform)
     kotlin("native.cocoapods")
     id("kotlin.detekt")
-    id("co.touchlab.skie") version "0.5.5"
+    id("co.touchlab.skie") version "0.6.0"
 }
 
 kotlin {
+    applyDefaultHierarchyTemplate()
+
     androidTarget()
-
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "composeApp"
-            isStatic = true
-            export(project(":shared"))
-            export(libs.decompose)
-            export(libs.essenty)
-        }
-    }
-
-    applyDefaultHierarchyTemplate {
-        common {
-            group("mobile") {
-                withIos()
-                withAndroidTarget()
-            }
-        }
-    }
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
 
     cocoapods {
         version = "1.0.0"
@@ -42,6 +24,13 @@ kotlin {
         homepage = "empty"
         ios.deploymentTarget = "15.0"
         podfile = project.file("../iosApp/Podfile")
+        framework {
+            baseName = "composeApp"
+            isStatic = true
+            export(project(":shared"))
+            export(libs.decompose)
+            export(libs.essenty)
+        }
     }
 
     sourceSets {

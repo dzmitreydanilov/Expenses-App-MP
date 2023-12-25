@@ -1,4 +1,4 @@
-package com.ddanilov.beerlover.decompose.brewery
+package com.ddanilov.beerlover.decompose.expense
 
 import com.arkivanov.decompose.ComponentContext
 

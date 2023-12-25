@@ -13,6 +13,7 @@ class RootComponent(
 ) : Root, ComponentContext by componentContext {
 
     private val navigation = StackNavigation<RootScreenConfig>()
+
     override val stack: Value<ChildStack<*, Root.Child>> = childStack(
         source = navigation,
         serializer = RootScreenConfig.serializer(),
@@ -33,7 +34,6 @@ class RootComponent(
             }
         }
     }
-
 }
 
 @Serializable

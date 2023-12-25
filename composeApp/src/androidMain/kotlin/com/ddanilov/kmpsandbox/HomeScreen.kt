@@ -63,7 +63,7 @@ private fun BottomNavigation(
     BottomAppBar(modifier = modifier) {
         NavigationBarItem(
             selected = activeComponent is Home.Child.Breweries,
-            onClick = { component.onTabClick(Home.Tab.Breweries) },
+            onClick = { component.onTabClick(Home.Tab.ExpensesHome) },
             icon = {
                 Icon(
                     imageVector = Icons.Default.Home,

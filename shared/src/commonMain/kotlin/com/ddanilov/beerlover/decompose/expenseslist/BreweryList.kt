@@ -1,10 +1,8 @@
-package com.ddanilov.beerlover.decompose.breweries
+package com.ddanilov.beerlover.decompose.expenseslist
 
 import com.arkivanov.decompose.router.slot.ChildSlot
 import com.arkivanov.decompose.value.Value
-import com.ddanilov.beerlover.breweries.BreweriesState
-import com.ddanilov.beerlover.decompose.brewery.BreweryInfoComponent
-import kotlinx.coroutines.flow.StateFlow
+import com.ddanilov.beerlover.decompose.expense.BreweryInfoComponent
 
 interface BreweryList {
 

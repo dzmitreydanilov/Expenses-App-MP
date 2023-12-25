@@ -22,18 +22,6 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "shared"
-            isStatic = true
-            export(libs.koin.core)
-        }
-    }
-
     sourceSets {
         kotlin.sourceSets.all {
             languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")

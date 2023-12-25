@@ -2,7 +2,7 @@ package com.ddanilov.beerlover.decompose.home
 
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
-import com.ddanilov.beerlover.decompose.breweries.BreweryList
+import com.ddanilov.beerlover.decompose.expenseslist.BreweryList
 import com.ddanilov.beerlover.decompose.favorite.Favorite
 
 interface Home {
@@ -12,7 +12,7 @@ interface Home {
     fun onTabClick(tabs: Tab)
 
     enum class Tab {
-        Breweries, Favorite
+        ExpensesHome, Favorite
     }
 
     fun onBackClicked()

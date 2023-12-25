@@ -8,7 +8,7 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.value.Value
-import com.ddanilov.beerlover.decompose.breweries.BreweryListComponent
+import com.ddanilov.beerlover.decompose.expenseslist.CategoriesList
 import com.ddanilov.beerlover.decompose.favorite.FavoriteComponent
 import kotlinx.serialization.Serializable
 
@@ -20,19 +20,19 @@ class HomeComponent(
     override val stack: Value<ChildStack<*, Home.Child>> = childStack(
         source = navigation,
         serializer = HomeScreenConfig.serializer(),
-        initialStack = { listOf(HomeScreenConfig.BreweriesList) },
+        initialStack = { listOf(HomeScreenConfig.CategoriesList) },
         childFactory = ::child
     )
 
     override fun onTabClick(tabs: Home.Tab) {
         when (tabs) {
-            Home.Tab.Breweries -> navigation.bringToFront(HomeScreenConfig.BreweriesList)
+            Home.Tab.ExpensesHome -> navigation.bringToFront(HomeScreenConfig.CategoriesList)
             Home.Tab.Favorite -> navigation.bringToFront(HomeScreenConfig.Favorite)
         }
     }
 
     private fun navigateBreweryDetails(id: String) {
-        navigation.push(HomeScreenConfig.BreweryDetail(id))
+        navigation.push(HomeScreenConfig.Details(id))
     }
 
     private fun child(
@@ -40,9 +40,9 @@ class HomeComponent(
         componentContext: ComponentContext
     ): Home.Child {
         return when (config) {
-            is HomeScreenConfig.BreweriesList -> {
+            is HomeScreenConfig.CategoriesList -> {
                 Home.Child.Breweries(
-                    BreweryListComponent(
+                    CategoriesList(
                         componentContext = componentContext,
                         onNavigateToBreweryDetails = ::navigateBreweryDetails
                     )
@@ -55,7 +55,7 @@ class HomeComponent(
                 )
             }
 
-            is HomeScreenConfig.BreweryDetail -> {
+            is HomeScreenConfig.Details -> {
                 Home.Child.BreweryDetails(config.id)
             }
         }
@@ -70,18 +70,18 @@ class HomeComponent(
 private sealed interface HomeScreenConfig {
 
     @Serializable
-    data object BreweriesList : HomeScreenConfig
+    data object CategoriesList : HomeScreenConfig
 
     @Serializable
     data object Favorite : HomeScreenConfig
 
     @Serializable
-    data class BreweryDetail(val id: String) : HomeScreenConfig
+    data class Details(val id: String) : HomeScreenConfig
 }
 
 @Serializable
 sealed interface SlotConfig {
 
     @Serializable
-    data object Brewery : SlotConfig
+    data object ExpensDetails : SlotConfig
 }

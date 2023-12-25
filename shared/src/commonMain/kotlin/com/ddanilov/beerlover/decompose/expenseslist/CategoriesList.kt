@@ -1,4 +1,4 @@
-package com.ddanilov.beerlover.decompose.breweries
+package com.ddanilov.beerlover.decompose.expenseslist
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.slot.ChildSlot
@@ -6,28 +6,21 @@ import com.arkivanov.decompose.router.slot.SlotNavigation
 import com.arkivanov.decompose.router.slot.childSlot
 import com.arkivanov.decompose.router.slot.dismiss
 import com.arkivanov.decompose.value.Value
-import com.arkivanov.essenty.instancekeeper.InstanceKeeper
 import com.arkivanov.essenty.instancekeeper.getOrCreate
-import com.arkivanov.essenty.lifecycle.Lifecycle
-import com.ddanilov.beerlover.breweries.BreweriesListRepository
-import com.ddanilov.beerlover.breweries.BreweriesState
 import com.ddanilov.beerlover.breweries.BreweriesViewModel
-import com.ddanilov.beerlover.decompose.brewery.BreweryInfoComponent
+import com.ddanilov.beerlover.decompose.expense.BreweryInfoComponent
 import com.ddanilov.beerlover.decompose.home.SlotConfig
-import com.ddanilov.beerlover.network.BreweriesListApiService
-import kotlinx.coroutines.flow.StateFlow
 import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
-class BreweryListComponent(
+class CategoriesList(
     componentContext: ComponentContext,
     private val onNavigateToBreweryDetails: (String) -> Unit
 ) : BreweryList, ComponentContext by componentContext, KoinComponent {
 
-    private val httpClient: BreweriesListApiService by inject()
-//    private val vm = BreweriesViewModel(BreweriesListRepository(httpClient))
-//    override val state = vm.breweriesState
     private val slotNavigation = SlotNavigation<SlotConfig>()
+
+    val vm = instanceKeeper.getOrCreate { BreweriesViewModel() }
+
     override val childSlot: Value<ChildSlot<*, BreweryList.SlotChild>> = childSlot(
         source = slotNavigation,
         serializer = SlotConfig.serializer(),
@@ -44,7 +37,7 @@ class BreweryListComponent(
         componentContext: ComponentContext
     ): BreweryList.SlotChild {
         return when (config) {
-            is SlotConfig.Brewery -> {
+            is SlotConfig.ExpensDetails -> {
                 BreweryList.SlotChild.BreweryInfo(
                     BreweryInfoComponent(
                         componentContext = componentContext,
