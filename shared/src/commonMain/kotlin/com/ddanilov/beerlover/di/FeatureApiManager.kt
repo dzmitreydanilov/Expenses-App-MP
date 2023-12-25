@@ -50,15 +50,21 @@ class FeatureApiManager<F : AbstractFeatureApi> internal constructor(
             when (feature) {
                 is FeatureApi, is FeatureImpl -> {
                     koin.get<Map<Qualifier, FeatureImpl>>(FEATURE_MAP_QUALIFIER)
-                        .getOrElse(feature.qualifier) { error("Provide the implementation ${feature.qualifier} in the :app") }
-                        .let { featureImpl -> koin.loadModules(listOf(featureImpl.createModule()), allowOverride = false) }
+                        .getOrElse(feature.qualifier) {
+                            error("Provide the implementation ${feature.qualifier} in the :app")
+                        }
+                        .let { featureImpl ->
+                            koin.loadModules(
+                                listOf(featureImpl.createModule()),
+                                allowOverride = false
+                            )
+                        }
                 }
             }
         }
     }
 
     companion object {
-
         val FEATURE_MAP_QUALIFIER = named("features")
     }
 }
