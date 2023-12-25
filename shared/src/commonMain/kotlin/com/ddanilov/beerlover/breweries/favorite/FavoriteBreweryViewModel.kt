@@ -1,6 +1,6 @@
 package com.ddanilov.beerlover.breweries.favorite
 
-import com.ddanilov.beerlover.ViewModel
+import com.ddanilov.beerlover.DecomposeViewModel
 import com.ddanilov.beerlover.breweries.BreweriesListRepository
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.asStateFlow
 
 class FavoriteBreweryViewModel(
     private val repository: BreweriesListRepository
-) : ViewModel() {
+) : DecomposeViewModel() {
 
     private val _state = MutableStateFlow<FavoriteBreweryState>(FavoriteBreweryState.Initial)
 

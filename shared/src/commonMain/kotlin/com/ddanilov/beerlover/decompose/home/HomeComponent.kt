@@ -8,13 +8,20 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.value.Value
+import com.arkivanov.essenty.instancekeeper.getOrCreate
 import com.ddanilov.beerlover.decompose.expenseslist.CategoriesList
+import com.ddanilov.beerlover.decompose.expenseslist.ListDependencies
 import com.ddanilov.beerlover.decompose.favorite.FavoriteComponent
+import com.ddanilov.beerlover.di.ComponentKoinContext
 import kotlinx.serialization.Serializable
 
 class HomeComponent(
     componentContext: ComponentContext
 ) : Home, ComponentContext by componentContext {
+
+    private val koinContext = instanceKeeper.getOrCreate {
+        ComponentKoinContext()
+    }
 
     private val navigation = StackNavigation<HomeScreenConfig>()
     override val stack: Value<ChildStack<*, Home.Child>> = childStack(
@@ -43,6 +50,7 @@ class HomeComponent(
             is HomeScreenConfig.CategoriesList -> {
                 Home.Child.Breweries(
                     CategoriesList(
+                        dependencies = koinContext.getOrCreateKoinScope(listOf()).get(),
                         componentContext = componentContext,
                         onNavigateToBreweryDetails = ::navigateBreweryDetails
                     )

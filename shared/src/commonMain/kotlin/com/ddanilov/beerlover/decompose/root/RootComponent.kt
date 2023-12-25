@@ -5,12 +5,23 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
+import com.arkivanov.essenty.instancekeeper.getOrCreate
 import com.ddanilov.beerlover.decompose.home.HomeComponent
+import com.ddanilov.beerlover.di.ComponentKoinContext
+import com.ddanilov.beerlover.networkModule
 import kotlinx.serialization.Serializable
 
 class RootComponent(
     componentContext: ComponentContext
 ) : Root, ComponentContext by componentContext {
+
+    val koinContext = instanceKeeper.getOrCreate {
+        ComponentKoinContext()
+    }
+
+    val scope = koinContext.getOrCreateKoinScope(
+        listOf(networkModule(true), rootModule)
+    )
 
     private val navigation = StackNavigation<RootScreenConfig>()
 
@@ -29,7 +40,7 @@ class RootComponent(
         return when (config) {
             is RootScreenConfig.Home -> {
                 Root.Child.Home(
-                    HomeComponent(componentContext = componentContext)
+                    HomeComponent(dependencies = scope.get(), componentContext = componentContext)
                 )
             }
         }

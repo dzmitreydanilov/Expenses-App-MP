@@ -47,6 +47,7 @@ fun HomeScreen(component: HomeComponent, modifier: Modifier = Modifier) {
                 when (val child = it.instance) {
                     is Home.Child.Breweries -> BreweriesList(component = child.component)
                     is Home.Child.Favorites -> FavoriteScreen(component = child.component)
+                    is Home.Child.BreweryDetails -> {}
                 }
             }
             BottomNavigation(activeComponent = activeComponent, component = component)
