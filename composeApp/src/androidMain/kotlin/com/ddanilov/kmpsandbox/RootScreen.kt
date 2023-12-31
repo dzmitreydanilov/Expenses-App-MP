@@ -23,7 +23,6 @@ import com.ddanilov.beerlover.decompose.root.Root
 import com.ddanilov.beerlover.decompose.root.RootComponent
 import com.ddanilov.kmpsandbox.breweries.BreweriesList
 
-
 @Composable
 fun RootScreen(
     component: RootComponent,

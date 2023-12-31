@@ -2,7 +2,7 @@
 plugins {
     id("kmp.library")
     kotlin("plugin.serialization")
-    id("com.google.devtools.ksp") version "1.9.20-1.0.14"
+    id("com.google.devtools.ksp")
     id("com.rickclephas.kmp.nativecoroutines") version "1.0.0-ALPHA-21"
 }
 
