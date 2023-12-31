@@ -1,4 +1,4 @@
-package com.ddanilov.kmpsandbox
+package com.expenses.app
 
 import android.app.Application
 import android.os.Bundle
@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.defaultComponentContext
 import com.ddanilov.beerlover.decompose.root.RootComponent
 import com.ddanilov.beerlover.initKoin
-import com.ddanilov.kmpsandbox.theme.AppTheme
+import com.expenses.app.theme.AppTheme
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.android.scope.AndroidScopeComponent

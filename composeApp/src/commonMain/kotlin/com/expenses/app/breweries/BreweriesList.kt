@@ -1,4 +1,4 @@
-package com.ddanilov.kmpsandbox.breweries
+package com.expenses.app.breweries
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

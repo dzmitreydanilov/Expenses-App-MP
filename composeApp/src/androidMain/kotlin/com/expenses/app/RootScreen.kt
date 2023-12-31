@@ -1,4 +1,4 @@
-package com.ddanilov.kmpsandbox
+package com.expenses.app
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -21,7 +21,6 @@ import com.arkivanov.decompose.extensions.compose.jetpack.stack.animation.stackA
 import com.arkivanov.decompose.extensions.compose.jetpack.subscribeAsState
 import com.ddanilov.beerlover.decompose.root.Root
 import com.ddanilov.beerlover.decompose.root.RootComponent
-import com.ddanilov.kmpsandbox.breweries.BreweriesList
 
 @Composable
 fun RootScreen(

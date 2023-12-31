@@ -14,22 +14,9 @@ import com.ddanilov.beerlover.di.ComponentKoinContext
 import org.koin.core.component.KoinComponent
 
 class CategoriesList(
-    dependencies: ListDependencies,
     componentContext: ComponentContext,
     private val onNavigateToBreweryDetails: (String) -> Unit
 ) : BreweryList, ComponentContext by componentContext, KoinComponent {
-
-    val koinContext = instanceKeeper.getOrCreate {
-        ComponentKoinContext()
-    }
-
-    val scope = koinContext.getOrCreateKoinScope(
-        createExpensesListModule(dependencies)
-    )
-
-    val vm: BreweriesViewModel = instanceKeeper.getOrCreate {
-        scope.get()
-    }
 
     private val slotNavigation = SlotNavigation<SlotConfig>()
 

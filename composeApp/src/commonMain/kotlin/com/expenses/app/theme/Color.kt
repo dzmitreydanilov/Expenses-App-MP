@@ -1,4 +1,4 @@
-package com.ddanilov.kmpsandbox.theme
+package com.expenses.app.theme
 
 import androidx.compose.ui.graphics.Color
 

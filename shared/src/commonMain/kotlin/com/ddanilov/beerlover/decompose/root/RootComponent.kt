@@ -15,14 +15,6 @@ class RootComponent(
     componentContext: ComponentContext
 ) : Root, ComponentContext by componentContext {
 
-    val koinContext = instanceKeeper.getOrCreate {
-        ComponentKoinContext()
-    }
-
-    val scope = koinContext.getOrCreateKoinScope(
-        listOf(networkModule(true), rootModule)
-    )
-
     private val navigation = StackNavigation<RootScreenConfig>()
 
     override val stack: Value<ChildStack<*, Root.Child>> = childStack(
@@ -40,7 +32,7 @@ class RootComponent(
         return when (config) {
             is RootScreenConfig.Home -> {
                 Root.Child.Home(
-                    HomeComponent(dependencies = scope.get(), componentContext = componentContext)
+                    HomeComponent(componentContext = componentContext)
                 )
             }
         }

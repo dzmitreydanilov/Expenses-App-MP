@@ -1,4 +1,4 @@
-package com.ddanilov.kmpsandbox.theme
+package com.expenses.app.theme
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
