@@ -3,10 +3,8 @@ plugins {
     id("kmp.library")
     kotlin("plugin.serialization")
     id("com.google.devtools.ksp")
-    id("com.rickclephas.kmp.nativecoroutines") version "1.0.0-ALPHA-21"
 }
 
-@OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
 kotlin {
     applyDefaultHierarchyTemplate()
 
@@ -23,26 +21,20 @@ kotlin {
     iosSimulatorArm64()
 
     sourceSets {
-        kotlin.sourceSets.all {
-            languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
-            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
-        }
-
-       commonMain {
+        commonMain {
             dependencies {
                 implementation(libs.decompose)
                 api(libs.koin.core)
                 implementation(project(":network"))
-                api("com.rickclephas.kmm:kmm-viewmodel-core:1.0.0-ALPHA-15")
             }
         }
-       androidMain {
+        androidMain {
             dependencies {
                 implementation(libs.koin.android)
                 implementation(libs.decompose.extensions.jetpack)
             }
         }
-       iosMain {
+        iosMain {
             dependencies {
                 api(libs.decompose)
                 api(libs.koin.core)
@@ -52,7 +44,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.ddanilov.kmpsandbox"
+    namespace = "com.expenses.app.shared"
     compileSdk = 34
     defaultConfig {
         minSdk = 28

@@ -20,3 +20,6 @@ rootProject.name = "KMPSandbox"
 include(":shared")
 include(":network")
 include(":composeApp")
+include(":firebase")
+include(":firebase:api")
+include(":firebase:impl")
