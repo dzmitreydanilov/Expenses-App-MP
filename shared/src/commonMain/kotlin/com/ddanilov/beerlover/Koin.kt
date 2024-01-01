@@ -1,5 +1,7 @@
 package com.ddanilov.beerlover
 
+import com.expenses.app.firebase.impl.categoriesModule
+import com.expenses.app.firebase.impl.firebaseModule
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
@@ -15,6 +17,8 @@ fun initKoin(
             apiServicesModule,
             repositoryModule(),
             platformModule(),
+            firebaseModule,
+            categoriesModule
         )
     }
 }

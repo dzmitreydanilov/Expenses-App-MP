@@ -92,7 +92,6 @@ private struct BreweryItemView : View {
     var body: some View {
         HStack {
             Text(breweryItem.name ?? "")
-            Text(breweryItem.address1 ?? "")
         }
     }
 }

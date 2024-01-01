@@ -3,33 +3,30 @@ plugins {
     kotlin("plugin.serialization")
 }
 
-kotlin {
-    androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-    }
+dependencies {
+    implementation(project.dependencies.platform("com.google.firebase:firebase-bom:32.7.0"))
+}
 
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "impl"
-            isStatic = true
-        }
-    }
+kotlin {
+    applyDefaultHierarchyTemplate()
+    androidTarget()
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
 
     sourceSets {
         commonMain.dependencies {
             api(project(":firebase:api"))
+            implementation(libs.koin.core)
             implementation("dev.gitlive:firebase-firestore:1.10.4")
             implementation("dev.gitlive:firebase-common:1.10.4")
             implementation(libs.kotlinx.serialization)
         }
+
+        androidMain.dependencies {
+
+        }
+
         commonTest.dependencies {
         }
     }

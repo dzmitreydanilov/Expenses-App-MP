@@ -1,16 +1,11 @@
 plugins {
     id("kmp.library")
+    kotlin("plugin.serialization")
 }
 
 kotlin {
-    androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
-    }
-
+    applyDefaultHierarchyTemplate()
+    androidTarget()
     iosX64()
     iosArm64()
     iosSimulatorArm64()
@@ -18,7 +13,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            //put your multiplatform dependencies here
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
         }
         commonTest.dependencies {
         }

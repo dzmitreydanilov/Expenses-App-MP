@@ -26,6 +26,7 @@ kotlin {
                 implementation(libs.decompose)
                 api(libs.koin.core)
                 implementation(project(":network"))
+                implementation(project(":firebase:impl"))
             }
         }
         androidMain {

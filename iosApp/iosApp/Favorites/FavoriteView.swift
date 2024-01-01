@@ -13,12 +13,6 @@ struct FavoriteView : View {
     }
     
     var body: some View {
-        Text(viewModel.state.brewery?.name ?? "Loading... ")
-            .task {
-                Task {
-                 await viewModel.getBrewery()
-                }
-             await viewModel.activate()
+        Text("HELLO")
         }
-    }
 }

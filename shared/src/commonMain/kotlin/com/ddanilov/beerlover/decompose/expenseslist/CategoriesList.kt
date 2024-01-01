@@ -6,17 +6,33 @@ import com.arkivanov.decompose.router.slot.SlotNavigation
 import com.arkivanov.decompose.router.slot.childSlot
 import com.arkivanov.decompose.router.slot.dismiss
 import com.arkivanov.decompose.value.Value
-import com.arkivanov.essenty.instancekeeper.getOrCreate
-import com.ddanilov.beerlover.breweries.BreweriesViewModel
+import com.arkivanov.essenty.lifecycle.LifecycleOwner
+import com.arkivanov.essenty.lifecycle.doOnDestroy
 import com.ddanilov.beerlover.decompose.expense.BreweryInfoComponent
 import com.ddanilov.beerlover.decompose.home.SlotConfig
-import com.ddanilov.beerlover.di.ComponentKoinContext
+import com.expenses.app.firebase.impl.ExpensesTypeProvider
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+import kotlin.coroutines.CoroutineContext
 
 class CategoriesList(
     componentContext: ComponentContext,
     private val onNavigateToBreweryDetails: (String) -> Unit
 ) : BreweryList, ComponentContext by componentContext, KoinComponent {
+
+    private val categories: ExpensesTypeProvider by inject()
+    private val scope = coroutineScope()
+    init {
+        scope.launch {
+            categories.getCategories()
+        }
+    }
 
     private val slotNavigation = SlotNavigation<SlotConfig>()
 
@@ -46,4 +62,13 @@ class CategoriesList(
             }
         }
     }
+}
+
+fun LifecycleOwner.coroutineScope(
+    context: CoroutineContext = Dispatchers.Main.immediate,
+): CoroutineScope {
+    val scope = CoroutineScope(context + SupervisorJob())
+    lifecycle.doOnDestroy(scope::cancel)
+
+    return scope
 }

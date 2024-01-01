@@ -36,7 +36,7 @@ coroutinesCore = "1.7.3"
 activityKtx = "1.8.0"
 fragmentKtx = "1.6.1"
 
-googleServices = "4.3.15"
+googleServices = "4.4.0"
 
 ktor = "2.3.7"
 okio = "3.6.0"
@@ -164,6 +164,7 @@ ktorIos = [
 ]
 
 [plugins]
+google-services = {id = "com.google.gms.google-services", version.ref = "googleServices"}
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }

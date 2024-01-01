@@ -1,10 +1,10 @@
-@file:Suppress("OPT_IN_USAGE")
 
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.compose)
     alias(libs.plugins.multiplatform)
+    alias(libs.plugins.google.services)
     kotlin("native.cocoapods")
     id("kotlin.detekt")
     id("co.touchlab.skie") version "0.6.0"
@@ -14,9 +14,19 @@ kotlin {
     applyDefaultHierarchyTemplate()
 
     androidTarget()
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "composeApp"
+            isStatic = true
+            export(project(":shared"))
+            export(libs.decompose)
+            export(libs.essenty)
+        }
+    }
 
     cocoapods {
         version = "1.0.0"
@@ -24,13 +34,6 @@ kotlin {
         homepage = "empty"
         ios.deploymentTarget = "15.0"
         podfile = project.file("../iosApp/Podfile")
-        framework {
-            baseName = "composeApp"
-            isStatic = true
-            export(project(":shared"))
-            export(libs.decompose)
-            export(libs.essenty)
-        }
     }
 
     sourceSets {
@@ -48,6 +51,7 @@ kotlin {
 
         androidMain {
             dependencies {
+
                 implementation(libs.bundles.compose)
                 implementation(libs.androidx.compose.activity)
                 implementation(libs.decompose.extensions.jetpack)

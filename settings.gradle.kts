@@ -16,7 +16,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "KMPSandbox"
+rootProject.name = "ExpensesApp"
 include(":shared")
 include(":network")
 include(":composeApp")
