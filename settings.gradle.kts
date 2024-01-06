@@ -20,6 +20,13 @@ rootProject.name = "ExpensesApp"
 include(":shared")
 include(":network")
 include(":composeApp")
+
 include(":firebase")
 include(":firebase:api")
 include(":firebase:impl")
+
+include(":core")
+
+include(":category")
+include(":category:impl")
+include(":category:api")

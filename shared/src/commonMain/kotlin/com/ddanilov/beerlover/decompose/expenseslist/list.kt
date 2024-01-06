@@ -1,7 +1,7 @@
 package com.ddanilov.beerlover.decompose.expenseslist
 
 import com.ddanilov.beerlover.breweries.BreweriesListRepository
-import com.ddanilov.beerlover.breweries.BreweriesViewModel
+import com.ddanilov.beerlover.breweries.CategoriesListViewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -12,7 +12,7 @@ fun createExpensesListModule(dependencies: ListDependencies): List<Module> {
                 BreweriesListRepository(get())
             }
             factory {
-                BreweriesViewModel(get())
+                CategoriesListViewModel(get())
             }
         },
 

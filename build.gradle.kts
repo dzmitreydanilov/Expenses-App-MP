@@ -15,7 +15,7 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.detekt) apply false
     alias(libs.plugins.multiplatform) apply false
-    alias(libs.plugins.compose) apply false
+//    alias(libs.plugins.compose) apply false
     alias(libs.plugins.google.services) apply false
 }
 

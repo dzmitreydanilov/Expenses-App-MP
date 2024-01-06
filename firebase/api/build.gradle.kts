@@ -14,6 +14,8 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+            implementation(project(":core"))
+            implementation(libs.koin.core)
         }
         commonTest.dependencies {
         }

@@ -1,6 +1,6 @@
 
 import Foundation
-import composeApp
+import shared
 import SwiftUI
 
 struct FavoriteView : View {

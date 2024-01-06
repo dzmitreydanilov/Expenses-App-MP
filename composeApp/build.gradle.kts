@@ -1,72 +1,9 @@
-
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.compose)
-    alias(libs.plugins.multiplatform)
     alias(libs.plugins.google.services)
-    kotlin("native.cocoapods")
     id("kotlin.detekt")
-    id("co.touchlab.skie") version "0.6.0"
-}
 
-kotlin {
-    applyDefaultHierarchyTemplate()
-
-    androidTarget()
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "composeApp"
-            isStatic = true
-            export(project(":shared"))
-            export(libs.decompose)
-            export(libs.essenty)
-        }
-    }
-
-    cocoapods {
-        version = "1.0.0"
-        summary = "Compose application framework"
-        homepage = "empty"
-        ios.deploymentTarget = "15.0"
-        podfile = project.file("../iosApp/Podfile")
-    }
-
-    sourceSets {
-        commonMain {
-            dependencies {
-                implementation(compose.runtime)
-                implementation(compose.foundation)
-                implementation(compose.material3)
-                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
-                implementation(compose.components.resources)
-                implementation(project(":shared"))
-                implementation(libs.decompose)
-            }
-        }
-
-        androidMain {
-            dependencies {
-
-                implementation(libs.bundles.compose)
-                implementation(libs.androidx.compose.activity)
-                implementation(libs.decompose.extensions.jetpack)
-                implementation(libs.koin.android)
-            }
-        }
-
-        iosMain {
-            dependencies {
-                api(project(":shared"))
-                api(libs.decompose)
-                api(libs.essenty)
-            }
-        }
-    }
 }
 
 android {
@@ -85,9 +22,15 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
+    dependencies {
+        implementation(libs.bundles.compose)
+        implementation(libs.decompose.extensions.jetpack)
+        implementation(libs.koin.android)
+        implementation(project(":shared"))
+    }
+
     sourceSets["main"].apply {
         manifest.srcFile("src/androidMain/AndroidManifest.xml")
         res.srcDirs("src/androidMain/resources")
-        resources.srcDirs("src/commonMain/resources")
     }
 }

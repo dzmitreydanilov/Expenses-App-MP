@@ -3,6 +3,7 @@ plugins {
     id("kmp.library")
     kotlin("plugin.serialization")
     id("com.google.devtools.ksp")
+    id("co.touchlab.skie") version "0.6.0"
 }
 
 kotlin {
@@ -16,9 +17,18 @@ kotlin {
         }
     }
 
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "shared"
+            isStatic = true
+            export(libs.decompose)
+            export(libs.essenty)
+        }
+    }
 
     sourceSets {
         commonMain {
@@ -27,6 +37,8 @@ kotlin {
                 api(libs.koin.core)
                 implementation(project(":network"))
                 implementation(project(":firebase:impl"))
+                implementation(project(":category:impl"))
+                implementation(project(":core"))
             }
         }
         androidMain {

@@ -1,5 +1,5 @@
 import SwiftUI
-import composeApp
+import shared
 
 @propertyWrapper struct StateValue<T : AnyObject>: DynamicProperty {
     @ObservedObject

@@ -1,5 +1,5 @@
 import Foundation
-import composeApp
+import shared
 
 typealias KoinApplication = Koin_coreKoinApplication
 typealias Koin = Koin_coreKoin
@@ -47,6 +47,5 @@ extension KoinApplication {
     private static let viewModelsPath: [PartialKeyPath<Koin>] = [
         \.breweriesViewModel,
          \.favoriteBreweryViewModel,
-         \.breweryDetailsViewModel
     ]
 }

@@ -1,5 +1,6 @@
 package com.ddanilov.beerlover.di
 
+import com.expenses.core.di.ApiDefinition
 import org.koin.core.definition.Kind
 import org.koin.core.qualifier.Qualifier
 import kotlin.reflect.KClass

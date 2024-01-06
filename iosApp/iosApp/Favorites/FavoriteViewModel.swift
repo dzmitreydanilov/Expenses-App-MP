@@ -1,5 +1,5 @@
 import Foundation
-import composeApp
+import shared
 
 class FavoriteViewModel : ObservableObject {
     

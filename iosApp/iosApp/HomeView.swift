@@ -1,5 +1,5 @@
 import Foundation
-import composeApp
+import shared
 import SwiftUI
 
 struct HomeView : View {
@@ -25,7 +25,9 @@ struct HomeView : View {
                     title: "Breweries",
                     systemImage: "building",
                     isActive: child is HomeChild.Breweries,
-                    action: {component.onTabClick(tabs: HomeTab.breweries)}
+                    action: {
+//                        component.onTabClick(tabs: HomeTab.expenses)
+                    }
                 )
                 BottomTabView(
                     title: "Favorite",

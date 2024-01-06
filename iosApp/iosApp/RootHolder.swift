@@ -1,6 +1,7 @@
 
 import SwiftUI
-import composeApp
+import shared
+import Firebase
 
 final class RootHolder : ObservableObject {
     

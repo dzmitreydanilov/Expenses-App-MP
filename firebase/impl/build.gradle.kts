@@ -17,6 +17,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(project(":firebase:api"))
+            implementation(project(":core"))
             implementation(libs.koin.core)
             implementation("dev.gitlive:firebase-firestore:1.10.4")
             implementation("dev.gitlive:firebase-common:1.10.4")

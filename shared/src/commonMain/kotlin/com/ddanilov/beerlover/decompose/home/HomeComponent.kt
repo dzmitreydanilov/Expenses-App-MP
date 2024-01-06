@@ -8,7 +8,7 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.value.Value
-import com.ddanilov.beerlover.decompose.expenseslist.CategoriesList
+import com.ddanilov.beerlover.decompose.expenseslist.CategoriesListComponent
 import com.ddanilov.beerlover.decompose.favorite.FavoriteComponent
 import kotlinx.serialization.Serializable
 
@@ -43,9 +43,9 @@ class HomeComponent(
         return when (config) {
             is HomeScreenConfig.CategoriesList -> {
                 Home.Child.Breweries(
-                    CategoriesList(
+                    CategoriesListComponent(
                         componentContext = componentContext,
-                        onNavigateToBreweryDetails = ::navigateBreweryDetails
+                        onNavigateCategory = ::navigateBreweryDetails
                     )
                 )
             }

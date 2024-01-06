@@ -1,6 +1,5 @@
 package com.ddanilov.beerlover.breweries.details
 
-import com.ddanilov.beerlover.breweries.BreweriesState
 import com.ddanilov.beerlover.models.Brewery
 
 sealed class BreweryDetailsState(

@@ -5,15 +5,13 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
-import com.arkivanov.essenty.instancekeeper.getOrCreate
+import com.ddanilov.beerlover.CustomDefaultComponentContext
 import com.ddanilov.beerlover.decompose.home.HomeComponent
-import com.ddanilov.beerlover.di.ComponentKoinContext
-import com.ddanilov.beerlover.networkModule
 import kotlinx.serialization.Serializable
 
 class RootComponent(
-    componentContext: ComponentContext
-) : Root, ComponentContext by componentContext {
+    componentContext: CustomDefaultComponentContext
+) : Root, CustomDefaultComponentContext by componentContext {
 
     private val navigation = StackNavigation<RootScreenConfig>()
 

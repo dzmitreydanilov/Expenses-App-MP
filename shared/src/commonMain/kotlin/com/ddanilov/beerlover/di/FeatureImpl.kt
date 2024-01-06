@@ -1,5 +1,9 @@
 package com.ddanilov.beerlover.di
 
+import com.expenses.core.di.AbstractFeatureApi
+import com.expenses.core.di.FeatureApi
+import com.expenses.core.di.FeatureImpl
+import com.expenses.core.di.LibraryApi
 import org.koin.core.component.getScopeName
 import org.koin.core.module.Module
 import org.koin.core.qualifier.Qualifier
