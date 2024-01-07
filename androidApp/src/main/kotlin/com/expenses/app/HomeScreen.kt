@@ -21,8 +21,6 @@ import com.arkivanov.decompose.extensions.compose.jetpack.stack.Children
 import com.arkivanov.decompose.extensions.compose.jetpack.subscribeAsState
 import com.ddanilov.beerlover.decompose.home.Home
 import com.ddanilov.beerlover.decompose.home.HomeComponent
-import com.expenses.app.breweries.BreweriesList
-import com.expenses.app.favorite.FavoriteScreen
 
 @Composable
 fun HomeScreen(component: HomeComponent, modifier: Modifier = Modifier) {

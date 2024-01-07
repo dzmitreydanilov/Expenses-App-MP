@@ -7,13 +7,15 @@ import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.push
+import com.arkivanov.decompose.router.stack.replaceAll
 import com.arkivanov.decompose.value.Value
+import com.ddanilov.beerlover.CustomDefaultComponentContext
 import com.ddanilov.beerlover.decompose.expenseslist.CategoriesListComponent
 import com.ddanilov.beerlover.decompose.favorite.FavoriteComponent
 import kotlinx.serialization.Serializable
 
 class HomeComponent(
-    componentContext: ComponentContext
+    componentContext: CustomDefaultComponentContext
 ) : Home, ComponentContext by componentContext {
 
 
@@ -28,7 +30,7 @@ class HomeComponent(
     override fun onTabClick(tabs: Home.Tab) {
         when (tabs) {
             Home.Tab.ExpensesHome -> navigation.bringToFront(HomeScreenConfig.CategoriesList)
-            Home.Tab.Favorite -> navigation.bringToFront(HomeScreenConfig.Favorite)
+            Home.Tab.Favorite -> navigation.replaceAll(HomeScreenConfig.Favorite)
         }
     }
 

@@ -19,7 +19,7 @@ dependencyResolutionManagement {
 rootProject.name = "ExpensesApp"
 include(":shared")
 include(":network")
-include(":composeApp")
+include(":androidApp")
 
 include(":firebase")
 include(":firebase:api")

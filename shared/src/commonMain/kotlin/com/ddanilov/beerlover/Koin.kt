@@ -42,4 +42,4 @@ private val featureImpl = listOf(
     CategoryImpl
 )
 
-interface CustomDefaultComponentContext : ComponentContext, KoinScopeComponent
+interface AppComponentContext : ComponentContext, KoinScopeComponent

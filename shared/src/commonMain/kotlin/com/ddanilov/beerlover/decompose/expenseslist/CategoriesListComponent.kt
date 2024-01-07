@@ -8,9 +8,9 @@ import com.arkivanov.decompose.router.slot.dismiss
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.LifecycleOwner
 import com.arkivanov.essenty.lifecycle.doOnDestroy
+import com.ddanilov.beerlover.AppComponentContext
 import com.ddanilov.beerlover.decompose.expense.BreweryInfoComponent
 import com.ddanilov.beerlover.decompose.home.SlotConfig
-import com.expenses.category.CategoryImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -24,11 +24,11 @@ import org.koin.mp.KoinPlatform.getKoin
 import kotlin.coroutines.CoroutineContext
 
 class CategoriesListComponent(
-    componentContext: ComponentContext,
+    componentContext: AppComponentContext,
     private val onNavigateCategory: (String) -> Unit
-) : CategoryList, ComponentContext by componentContext, KoinComponent {
+) : CategoryList, AppComponentContext by componentContext, KoinComponent {
 
-    val scope = createScopeForCurrentLifecycle(this)
+//    val scope = createScopeForCurrentLifecycle(this)
 
     private val slotNavigation = SlotNavigation<SlotConfig>()
 
@@ -71,7 +71,6 @@ fun LifecycleOwner.coroutineScope(
 
 fun LifecycleOwner.createScopeForCurrentLifecycle(owner: LifecycleOwner): Scope {
     val scope = getKoin().createScope(getScopeId(), getScopeName(), this)
-
     scope.registerCallback(object : ScopeCallback {
         override fun onScopeClose(scope: Scope) {
             println("XXXXX onScopeClose")
@@ -97,7 +96,7 @@ interface KoinScopeComponent {
     /**
      * Current Scope in use by the component
      */
-    val scope: Scope
+    val scope: Scope?
 
     /**
      * Called before closing a scope, on onDestroy

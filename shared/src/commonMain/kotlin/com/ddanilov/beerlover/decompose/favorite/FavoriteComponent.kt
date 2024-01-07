@@ -1,6 +1,7 @@
 package com.ddanilov.beerlover.decompose.favorite
 
 import com.arkivanov.decompose.ComponentContext
+import com.ddanilov.beerlover.CustomDefaultComponentContext
 
 class FavoriteComponent(
     componentContext: ComponentContext

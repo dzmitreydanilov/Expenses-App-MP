@@ -1,15 +1,7 @@
-package com.expenses.app
+package com.ddanilov.beerlover
 
-import android.app.Application
-import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.OnBackPressedDispatcher
 import androidx.activity.OnBackPressedDispatcherOwner
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.ui.Modifier
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
@@ -24,44 +16,7 @@ import com.arkivanov.essenty.lifecycle.asEssentyLifecycle
 import com.arkivanov.essenty.lifecycle.doOnDestroy
 import com.arkivanov.essenty.statekeeper.StateKeeper
 import com.arkivanov.essenty.statekeeper.StateKeeperDispatcher
-import com.ddanilov.beerlover.CustomDefaultComponentContext
-import com.ddanilov.beerlover.decompose.expenseslist.KoinScopeComponent
-import com.ddanilov.beerlover.decompose.expenseslist.createScopeForCurrentLifecycle
-import com.ddanilov.beerlover.decompose.root.RootComponent
-import com.ddanilov.beerlover.initKoin
-import com.expenses.app.theme.AppTheme
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
 import org.koin.core.scope.Scope
-
-class AndroidApp : Application() {
-
-    override fun onCreate() {
-        super.onCreate()
-        initKoin(true) {
-            androidContext(this@AndroidApp)
-            androidLogger()
-        }
-    }
-}
-
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val appComponent = RootComponent(myDefaultComponentContext())
-        setContent {
-            AppTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    RootScreen(component = appComponent)
-                }
-            }
-        }
-    }
-}
-
 
 fun <T> T.myDefaultComponentContext(): MyDefaultComponentContext where
         T : SavedStateRegistryOwner, T : OnBackPressedDispatcherOwner, T : ViewModelStoreOwner, T : LifecycleOwner =
@@ -91,13 +46,14 @@ class MyDefaultComponentContext(
     stateKeeper: StateKeeper? = null,
     instanceKeeper: InstanceKeeper? = null,
     backHandler: BackHandler? = null,
-) : CustomDefaultComponentContext, KoinScopeComponent {
+    koinScope: Scope? = null
+) : AppComponentContext {
 
     override val stateKeeper: StateKeeper = stateKeeper ?: StateKeeperDispatcher()
     override val instanceKeeper: InstanceKeeper =
         instanceKeeper ?: InstanceKeeperDispatcher().attachTo(lifecycle)
     override val backHandler: BackHandler = backHandler ?: BackDispatcher()
-    override val scope: Scope = createScopeForCurrentLifecycle(this)
+    override val scope: Scope? = null
 
     constructor(lifecycle: Lifecycle) : this(
         lifecycle = lifecycle,

@@ -33,7 +33,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation(libs.decompose)
+                api(libs.decompose)
                 api(libs.koin.core)
                 implementation(project(":network"))
                 implementation(project(":firebase:impl"))

@@ -1,11 +1,11 @@
 package com.expenses.app
 
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -32,7 +32,6 @@ fun RootScreen(
         contentWindowInsets = WindowInsets(0.dp),
         modifier = Modifier
             .fillMaxSize()
-            .systemBarsPadding(),
     ) { innerPadding ->
         Column(
             modifier = modifier
