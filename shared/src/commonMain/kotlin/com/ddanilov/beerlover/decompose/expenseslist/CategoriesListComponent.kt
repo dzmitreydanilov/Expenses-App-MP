@@ -28,7 +28,7 @@ class CategoriesListComponent(
     private val onNavigateCategory: (String) -> Unit
 ) : CategoryList, AppComponentContext by componentContext, KoinComponent {
 
-//    val scope = createScopeForCurrentLifecycle(this)
+    override val scope: Scope = createScopeForCurrentLifecycle(this)
 
     private val slotNavigation = SlotNavigation<SlotConfig>()
 
@@ -38,6 +38,7 @@ class CategoriesListComponent(
         handleBackButton = true,
         childFactory = ::createChildSlot
     )
+
 
     override fun navigateBreweryDetails(id: String) {
         onNavigateCategory(id)
@@ -70,7 +71,7 @@ fun LifecycleOwner.coroutineScope(
 }
 
 fun LifecycleOwner.createScopeForCurrentLifecycle(owner: LifecycleOwner): Scope {
-    val scope = getKoin().createScope(getScopeId(), getScopeName(), this)
+    val scope = getKoin().getOrCreateScope(getScopeId(), getScopeName(), this)
     scope.registerCallback(object : ScopeCallback {
         override fun onScopeClose(scope: Scope) {
             println("XXXXX onScopeClose")

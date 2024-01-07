@@ -5,16 +5,18 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
+import com.ddanilov.beerlover.AppComponentContext
+import com.ddanilov.beerlover.appChildStack
 import com.ddanilov.beerlover.decompose.home.HomeComponent
 import kotlinx.serialization.Serializable
 
 class RootComponent(
-    componentContext: ComponentContext
-) : Root, ComponentContext by componentContext {
+    componentContext: AppComponentContext
+) : Root, AppComponentContext by componentContext {
 
     private val navigation = StackNavigation<RootScreenConfig>()
 
-    override val stack: Value<ChildStack<*, Root.Child>> = childStack(
+    override val stack: Value<ChildStack<*, Root.Child>> = appChildStack(
         source = navigation,
         serializer = RootScreenConfig.serializer(),
         handleBackButton = true,
@@ -24,7 +26,7 @@ class RootComponent(
 
     private fun createChild(
         config: RootScreenConfig,
-        componentContext: ComponentContext
+        componentContext: AppComponentContext
     ): Root.Child {
         return when (config) {
             is RootScreenConfig.Home -> {
