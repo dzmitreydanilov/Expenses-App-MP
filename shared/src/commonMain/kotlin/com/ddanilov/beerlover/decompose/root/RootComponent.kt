@@ -1,13 +1,11 @@
 package com.ddanilov.beerlover.decompose.root
 
-import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
-import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
-import com.ddanilov.beerlover.AppComponentContext
-import com.ddanilov.beerlover.appChildStack
 import com.ddanilov.beerlover.decompose.home.HomeComponent
+import com.expenses.core.decompose.AppComponentContext
+import com.expenses.core.decompose.appChildStack
 import kotlinx.serialization.Serializable
 
 class RootComponent(

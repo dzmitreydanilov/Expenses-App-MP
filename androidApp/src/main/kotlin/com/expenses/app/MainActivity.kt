@@ -9,9 +9,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.defaultComponentContext
-import com.ddanilov.beerlover.DefaultAppComponentContext
 import com.ddanilov.beerlover.decompose.root.RootComponent
 import com.ddanilov.beerlover.initKoin
+import com.expenses.core.decompose.DefaultAppComponentContext
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 

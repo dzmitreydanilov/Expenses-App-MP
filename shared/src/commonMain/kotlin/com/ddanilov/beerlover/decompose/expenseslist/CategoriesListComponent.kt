@@ -8,19 +8,22 @@ import com.arkivanov.decompose.router.slot.dismiss
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.LifecycleOwner
 import com.arkivanov.essenty.lifecycle.doOnDestroy
-import com.ddanilov.beerlover.AppComponentContext
 import com.ddanilov.beerlover.decompose.expense.BreweryInfoComponent
 import com.ddanilov.beerlover.decompose.home.SlotConfig
+import com.expenses.api.CategoryApi
+import com.expenses.api.ExpensesCategory
+import com.expenses.category.CategoryImpl
+import com.expenses.core.decompose.AppComponentContext
+import com.expenses.core.decompose.createScopeForCurrentLifecycle
+import com.expenses.core.di.getFeatureApiManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
-import org.koin.core.component.getScopeId
-import org.koin.core.component.getScopeName
+import org.koin.core.component.inject
 import org.koin.core.scope.Scope
-import org.koin.core.scope.ScopeCallback
-import org.koin.mp.KoinPlatform.getKoin
 import kotlin.coroutines.CoroutineContext
 
 class CategoriesListComponent(
@@ -29,6 +32,15 @@ class CategoriesListComponent(
 ) : CategoryList, AppComponentContext by componentContext, KoinComponent {
 
     override val scope: Scope = createScopeForCurrentLifecycle(this)
+    private val provider: ExpensesCategory by inject()
+    private val coroutineScope = coroutineScope()
+
+    init {
+        getKoin().getFeatureApiManager(CategoryApi).link(scope)
+        coroutineScope.launch {
+            provider.getCategories()
+        }
+    }
 
     private val slotNavigation = SlotNavigation<SlotConfig>()
 
@@ -68,39 +80,4 @@ fun LifecycleOwner.coroutineScope(
     lifecycle.doOnDestroy(scope::cancel)
 
     return scope
-}
-
-fun LifecycleOwner.createScopeForCurrentLifecycle(owner: LifecycleOwner): Scope {
-    val scope = getKoin().getOrCreateScope(getScopeId(), getScopeName(), this)
-    scope.registerCallback(object : ScopeCallback {
-        override fun onScopeClose(scope: Scope) {
-            println("XXXXX onScopeClose")
-            (owner as KoinScopeComponent).onCloseScope()
-        }
-    })
-
-    registerScopeForLifecycle(scope)
-
-    return scope
-}
-
-internal fun LifecycleOwner.registerScopeForLifecycle(scope: Scope) {
-    doOnDestroy {
-        scope.close()
-    }
-}
-
-interface KoinScopeComponent {
-
-    //TODO Make scope nullable with var?
-
-    /**
-     * Current Scope in use by the component
-     */
-    val scope: Scope?
-
-    /**
-     * Called before closing a scope, on onDestroy
-     */
-    fun onCloseScope() {}
 }

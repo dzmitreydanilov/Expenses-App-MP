@@ -18,7 +18,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(libs.koin.core)
-            implementation(project(":category:api"))
+            api(project(":category:api"))
             implementation(project(":firebase:api"))
             implementation(project(":core"))
         }

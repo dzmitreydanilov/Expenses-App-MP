@@ -27,6 +27,7 @@ kotlin {
             isStatic = true
             export(libs.decompose)
             export(libs.essenty)
+            export(project(":core"))
         }
     }
 
@@ -38,7 +39,7 @@ kotlin {
                 implementation(project(":network"))
                 implementation(project(":firebase:impl"))
                 implementation(project(":category:impl"))
-                implementation(project(":core"))
+                api(project(":core"))
             }
         }
         androidMain {
@@ -51,6 +52,7 @@ kotlin {
             dependencies {
                 api(libs.decompose)
                 api(libs.koin.core)
+                api(project(":core"))
             }
         }
     }

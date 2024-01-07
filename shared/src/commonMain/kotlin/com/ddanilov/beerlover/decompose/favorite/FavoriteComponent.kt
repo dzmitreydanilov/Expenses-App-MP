@@ -1,8 +1,7 @@
 package com.ddanilov.beerlover.decompose.favorite
 
-import com.arkivanov.decompose.ComponentContext
-import com.ddanilov.beerlover.AppComponentContext
-import com.ddanilov.beerlover.decompose.expenseslist.createScopeForCurrentLifecycle
+import com.expenses.core.decompose.AppComponentContext
+import com.expenses.core.decompose.createScopeForCurrentLifecycle
 import org.koin.core.scope.Scope
 
 class FavoriteComponent(
