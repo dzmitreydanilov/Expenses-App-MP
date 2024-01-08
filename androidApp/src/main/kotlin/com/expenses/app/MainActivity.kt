@@ -22,6 +22,9 @@ class AndroidApp : Application() {
         initKoin(true) {
             androidContext(this@AndroidApp)
             androidLogger()
+            modules(
+
+            )
         }
     }
 }

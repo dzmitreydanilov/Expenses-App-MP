@@ -10,9 +10,11 @@ import com.expenses.core.di.LibraryImpl
 
 object CategoryImpl : LibraryImpl(CategoryApi) {
 
-    override val dependencies: List<AbstractFeatureApi> = listOf(FirebaseApi)
+    override val dependencies: List<AbstractFeatureApi> = listOf(FirebaseApi, CategoryApi)
 
     override fun ImplDSL.definitions() {
-        scoped<ExpensesCategory> { resolve(::ExpensesCategoryProvider) }
+        scoped<ExpensesCategory> {
+            resolve(::ExpensesCategoryProvider)
+        }
     }
 }

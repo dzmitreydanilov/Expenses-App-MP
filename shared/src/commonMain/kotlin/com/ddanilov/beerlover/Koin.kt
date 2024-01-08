@@ -1,6 +1,6 @@
 package com.ddanilov.beerlover
 
-import com.ddanilov.beerlover.di.FeatureApiManager
+import com.expenses.core.di.FeatureApiManager
 import com.expenses.app.firebase.impl.FirebaseProvider
 import com.expenses.app.firebase.impl.firebaseAppModule
 import com.expenses.category.CategoryImpl
