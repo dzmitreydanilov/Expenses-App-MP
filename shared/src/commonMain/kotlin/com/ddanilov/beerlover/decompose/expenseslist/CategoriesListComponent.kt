@@ -12,31 +12,32 @@ import com.ddanilov.beerlover.decompose.expense.BreweryInfoComponent
 import com.ddanilov.beerlover.decompose.home.SlotConfig
 import com.expenses.api.CategoryApi
 import com.expenses.api.ExpensesCategory
-import com.expenses.category.CategoryImpl
 import com.expenses.core.decompose.AppComponentContext
-import com.expenses.core.decompose.createScopeForCurrentLifecycle
+import com.expenses.core.decompose.createKoinScopeForCurrentLifecycle
+import com.expenses.core.di.DecomposeKoinScopeComponent
 import com.expenses.core.di.getFeatureApiManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
-import org.koin.core.scope.Scope
+import org.koin.core.parameter.ParametersDefinition
+import org.koin.core.qualifier.Qualifier
+import org.koin.mp.KoinPlatform.getKoin
+import org.koin.mp.KoinPlatformTools
 import kotlin.coroutines.CoroutineContext
 
 class CategoriesListComponent(
     componentContext: AppComponentContext,
     private val onNavigateCategory: (String) -> Unit
-) : CategoryList, AppComponentContext by componentContext, KoinComponent {
+) : CategoryList, AppComponentContext by componentContext {
 
-    override val scope: Scope = createScopeForCurrentLifecycle(this)
     private val provider: ExpensesCategory by inject()
     private val coroutineScope = coroutineScope()
 
     init {
-        getKoin().getFeatureApiManager(CategoryApi).link(scope)
+        getKoin().getFeatureApiManager(CategoryApi)
+            .link(scope ?: createKoinScopeForCurrentLifecycle(this))
         coroutineScope.launch {
             provider.getCategories()
         }
@@ -50,7 +51,6 @@ class CategoriesListComponent(
         handleBackButton = true,
         childFactory = ::createChildSlot
     )
-
 
     override fun navigateBreweryDetails(id: String) {
         onNavigateCategory(id)
@@ -81,3 +81,27 @@ fun LifecycleOwner.coroutineScope(
 
     return scope
 }
+
+inline fun <reified T : Any> DecomposeKoinScopeComponent.get(
+    qualifier: Qualifier? = null,
+    noinline parameters: ParametersDefinition? = null,
+): T {
+    return if (this is DecomposeKoinScopeComponent) {
+        scope!!.get(qualifier, parameters)
+    } else {
+        getKoin().get(qualifier, parameters)
+    }
+}
+
+/**
+ * Lazy inject instance from Koin
+ * @param qualifier
+ * @param mode - LazyThreadSafetyMode
+ * @param parameters
+ */
+inline fun <reified T : Any> DecomposeKoinScopeComponent.inject(
+    qualifier: Qualifier? = null,
+    mode: LazyThreadSafetyMode = KoinPlatformTools.defaultLazyMode(),
+    noinline parameters: ParametersDefinition? = null,
+): Lazy<T> =
+    lazy(mode) { get<T>(qualifier, parameters) }

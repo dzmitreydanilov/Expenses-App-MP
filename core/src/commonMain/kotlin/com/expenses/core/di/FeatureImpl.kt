@@ -1,6 +1,5 @@
 package com.expenses.core.di
 
-import com.ddanilov.beerlover.di.ImplDSL
 import org.koin.core.component.getScopeName
 import org.koin.core.module.Module
 import org.koin.core.qualifier.Qualifier

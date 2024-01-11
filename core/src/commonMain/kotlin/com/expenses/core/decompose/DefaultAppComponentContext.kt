@@ -13,7 +13,7 @@ import org.koin.core.scope.Scope
 class DefaultAppComponentContext(
     componentContext: ComponentContext
 ) : AppComponentContext, ComponentContext by componentContext {
-    override val scope: Scope? = null
+    override val scope: Scope = createKoinScopeForCurrentLifecycle(this)
 }
 
 fun AppComponentContext.childAppContext(

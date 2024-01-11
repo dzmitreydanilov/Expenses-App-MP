@@ -1,20 +1,18 @@
 package com.expenses.category
 
-import com.ddanilov.beerlover.di.ImplDSL
-import com.ddanilov.beerlover.di.resolve
 import com.expenses.api.CategoryApi
 import com.expenses.api.ExpensesCategory
 import com.expenses.app.firebase.api.FirebaseApi
-import com.expenses.core.di.AbstractFeatureApi
-import com.expenses.core.di.LibraryImpl
+import com.expenses.core.di.FeatureImpl
+import com.expenses.core.di.ImplDSL
 
-object CategoryImpl : LibraryImpl(CategoryApi) {
+object CategoryImpl : FeatureImpl(CategoryApi) {
 
-    override val dependencies: List<AbstractFeatureApi> = listOf(FirebaseApi, CategoryApi)
+    override val dependencies = listOf(FirebaseApi)
 
     override fun ImplDSL.definitions() {
         scoped<ExpensesCategory> {
-            resolve(::ExpensesCategoryProvider)
+            ExpensesCategoryProvider(firestore = get())
         }
     }
 }

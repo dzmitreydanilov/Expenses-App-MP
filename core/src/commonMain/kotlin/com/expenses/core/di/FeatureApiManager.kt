@@ -39,7 +39,8 @@ class FeatureApiManager<F : AbstractFeatureApi> internal constructor(
         return koin.createScope(feature.qualifier.value, feature.qualifier, this)
             .also { scope ->
                 feature.dependencies.forEach { dependency ->
-                    koin.getFeatureApiManager(dependency).link(scope)
+                    val manager = koin.getFeatureApiManager(dependency)
+                    manager.link(scope)
                 }
             }
     }
@@ -54,8 +55,9 @@ class FeatureApiManager<F : AbstractFeatureApi> internal constructor(
                             error("Provide the implementation ${feature.qualifier} in the :app")
                         }
                         .let { featureImpl ->
+                            val module = featureImpl.createModule()
                             koin.loadModules(
-                                listOf(featureImpl.createModule()),
+                                listOf(module),
                                 allowOverride = false
                             )
                         }

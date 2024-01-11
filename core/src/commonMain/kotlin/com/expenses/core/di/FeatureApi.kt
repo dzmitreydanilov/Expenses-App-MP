@@ -15,6 +15,9 @@ abstract class FeatureApi : AbstractFeatureApi() {
 
     final override var dependencies: List<AbstractFeatureApi> = emptyList()
 
+    /**
+     * Shows which classes accessible throught feature api
+     */
     protected abstract fun ApiDSL.definitions()
 
     fun getApiDefinitions(): List<ApiDefinition> =

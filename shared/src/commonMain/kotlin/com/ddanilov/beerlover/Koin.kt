@@ -1,11 +1,14 @@
 package com.ddanilov.beerlover
 
 import com.expenses.core.di.FeatureApiManager
-import com.expenses.app.firebase.impl.FirebaseProvider
+import com.expenses.app.firebase.impl.FirestoreFeatureImpl
 import com.expenses.app.firebase.impl.firebaseAppModule
 import com.expenses.category.CategoryImpl
+import com.expenses.core.di.FeatureImpl
+import com.expenses.core.di.LibraryImpl
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
+import org.koin.core.qualifier.Qualifier
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.module
 
@@ -22,10 +25,15 @@ fun initKoin(
             platformModule(),
             firebaseAppModule,
             module {
-                single(FeatureApiManager.FEATURE_MAP_QUALIFIER) { featureImpl.associateBy { it.qualifier } }
+                single(FeatureApiManager.FEATURE_MAP_QUALIFIER) { createMap() }
             }
         )
     }
+}
+
+private fun createMap(): Map<Qualifier, FeatureImpl> {
+    val map = featureImpl.associateBy { it.qualifier }
+    return map
 }
 
 
@@ -36,6 +44,6 @@ fun KoinApplication.Companion.start(networkLoggingEnabled: Boolean = false): Koi
 }
 
 private val featureImpl = listOf(
-    FirebaseProvider,
+    FirestoreFeatureImpl,
     CategoryImpl
 )

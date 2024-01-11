@@ -1,4 +1,4 @@
-package com.ddanilov.beerlover.di
+package com.expenses.core.di
 
 import org.koin.dsl.ScopeDSL
 

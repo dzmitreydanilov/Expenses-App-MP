@@ -1,13 +1,14 @@
 package com.expenses.app.firebase.impl
 
-import com.ddanilov.beerlover.di.ImplDSL
+import com.expenses.core.di.ImplDSL
 import com.ddanilov.beerlover.di.resolve
 import com.expenses.app.firebase.api.FirebaseApi
+import com.expenses.app.firebase.api.Firestore
 import com.expenses.core.di.LibraryImpl
 
-object FirebaseProvider : LibraryImpl(FirebaseApi) {
+object FirestoreFeatureImpl : LibraryImpl(FirebaseApi) {
 
     override fun ImplDSL.definitions() {
-        scoped { resolve(::FirestoreStorage) }
+        scoped<Firestore> { resolve(::FirestoreStorage) }
     }
 }
