@@ -4,10 +4,10 @@ import shared
 
 class ExpensesListViewModel : ObservableObject {
         
-    let viewmodel: BreweriesViewModel = KoinApplication.inject()
+    let viewmodel: CategoriesListViewModel = KoinApplication.inject()
     
     @Published
-    private(set) var state: BreweriesState = .Initial.shared
+    private(set) var state: CategoriesListState = .Initial.shared
 
     @MainActor
     func activate() async {
@@ -17,7 +17,7 @@ class ExpensesListViewModel : ObservableObject {
     }
     
     func isErrorState() -> Bool {
-        return self.state is BreweriesState.Error
+        return self.state is CategoriesListState.Error
     }
     
     // Just call func, that under the hood starts coroutines, for example listening for live updates

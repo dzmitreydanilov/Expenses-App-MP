@@ -26,7 +26,7 @@ struct HomeView : View {
                     systemImage: "building",
                     isActive: child is HomeChild.Breweries,
                     action: {
-//                        component.onTabClick(tabs: HomeTab.expenses)
+                        component.onTabClick(tabs: HomeTab.expensesHome)
                     }
                 )
                 BottomTabView(

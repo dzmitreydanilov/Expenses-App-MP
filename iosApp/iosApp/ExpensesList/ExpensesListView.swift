@@ -7,24 +7,30 @@ struct BreweriesListView : View {
     @ObservedObject
     var viewModel: ExpensesListViewModel
     
-    let component: BreweryList
+    let component: CategoryList
     
-    init(_ component: BreweryList) {
+    init(_ component: CategoryList) {
         self.viewModel = ExpensesListViewModel()
         self.component = component
     }
     
     var body: some View {
         VStack {
-            switch viewModel.state {
-            case let _ as BreweriesState.Loading: ProgressView()
-            default: BreweriesListContent(
+//            switch viewModel.state {
+//            case let _ as CategoriesListState.Loading: ProgressView()
+//            default: BreweriesListContent(
+//                state: viewModel.state,
+//                isError: viewModel.isErrorState(),
+//                btnAction: viewModel.getBreweriesListWithError,
+//                navigateToBreweryDetails: component.navigateBreweryDetails
+//            )
+//            }
+            BreweriesListContent(
                 state: viewModel.state,
                 isError: viewModel.isErrorState(),
                 btnAction: viewModel.getBreweriesListWithError,
                 navigateToBreweryDetails: component.navigateBreweryDetails
             )
-            }
         }.refreshable {
             viewModel.refreshBrewerylist()
         }
@@ -41,7 +47,7 @@ struct BreweriesListView : View {
 private struct BreweriesListContent : View {
     
     @State
-    var state: BreweriesState
+    var state: CategoriesListState
     
     @State
     var isError: Bool
@@ -53,7 +59,7 @@ private struct BreweriesListContent : View {
     var body: some View {
         VStack {
             List {
-                ForEach(state.breweries, id: \.name) { brewery in
+                ForEach(state.categories, id: \.name) { brewery in
                     BreweryItemView(brewery).onTapGesture {
                         navigateToBreweryDetails(brewery.name ?? "")
                     }

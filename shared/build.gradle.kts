@@ -3,7 +3,7 @@ plugins {
     id("kmp.library")
     kotlin("plugin.serialization")
     id("com.google.devtools.ksp")
-    id("co.touchlab.skie") version "0.6.0"
+    id("co.touchlab.skie") version "0.6.1"
 }
 
 kotlin {
