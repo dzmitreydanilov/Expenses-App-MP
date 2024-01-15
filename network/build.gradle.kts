@@ -1,16 +1,17 @@
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
+import org.jetbrains.kotlin.scripting.definitions.StandardScriptDefinition.platform
 
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     id("kmp.library")
-    kotlin("native.cocoapods")
+
     alias(libs.plugins.test.resources)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
 }
 
 kotlin {
-    androidTarget()
+    android()
     ios()
     iosSimulatorArm64()
 
@@ -72,17 +73,7 @@ kotlin {
         testExecutable.set(testBinary.outputFile)
         simulatorId.set("95681291-6F63-456C-B59D-F157A32BF45E")
     }
-
-    cocoapods {
-        summary = "Modle which provides base abstract ApiService and Platform specific http clients"
-        homepage = "Link to the Shared Module homepage"
-        version = "1.0"
-        ios.deploymentTarget = "15"
-        framework {
-            baseName = "kmp-network-module"
-            isStatic = true
-        }
-    }
 }
+
 
 android.namespace = "com.itransition.templates.kmp.network"

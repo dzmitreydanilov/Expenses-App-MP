@@ -47,7 +47,7 @@ gradlePlugin {
         }
         register("kmpLibrary") {
             id = "kmp.library"
-            implementationClass = "KotlinMultiplatformLibraryConventionPlugin"
+            implementationClass = "MultiplatformLibraryConventionPlugin"
         }
         register("androidLibrary") {
             id = "android.library"

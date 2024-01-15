@@ -11,6 +11,8 @@ final class RootHolder : ObservableObject {
     init() {
         KoinApplication.start()
         
+        let crypto = KCrypto()
+        
         self.lifecycle = LifecycleRegistryKt.LifecycleRegistry()
         
         self.root = RootComponent(

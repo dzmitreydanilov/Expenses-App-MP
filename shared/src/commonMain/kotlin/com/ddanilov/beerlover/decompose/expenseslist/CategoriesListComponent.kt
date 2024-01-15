@@ -8,6 +8,7 @@ import com.arkivanov.decompose.router.slot.dismiss
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.LifecycleOwner
 import com.arkivanov.essenty.lifecycle.doOnDestroy
+import com.ddanilov.beerlover.NetworkListener
 import com.ddanilov.beerlover.decompose.expense.BreweryInfoComponent
 import com.ddanilov.beerlover.decompose.home.SlotConfig
 import com.expenses.api.CategoryApi
@@ -20,6 +21,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.core.parameter.ParametersDefinition
 import org.koin.core.qualifier.Qualifier
@@ -33,6 +35,7 @@ class CategoriesListComponent(
 ) : CategoryList, AppComponentContext by componentContext {
 
     private val provider: ExpensesCategory by inject()
+    private val connectivity: NetworkListener by inject()
     private val coroutineScope = coroutineScope()
 
     init {
@@ -40,6 +43,12 @@ class CategoriesListComponent(
             .link(scope ?: createKoinScopeForCurrentLifecycle(this))
         coroutineScope.launch {
             provider.getCategories()
+        }
+
+        coroutineScope.launch {
+            connectivity.networkStatus.collect {
+                println("XXXXX CONNECTION STATUS: $it")
+            }
         }
     }
 

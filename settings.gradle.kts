@@ -30,3 +30,5 @@ include(":core")
 include(":category")
 include(":category:impl")
 include(":category:api")
+
+include(":SwiftChachaPoly")

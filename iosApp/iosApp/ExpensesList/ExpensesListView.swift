@@ -16,15 +16,6 @@ struct BreweriesListView : View {
     
     var body: some View {
         VStack {
-//            switch viewModel.state {
-//            case let _ as CategoriesListState.Loading: ProgressView()
-//            default: BreweriesListContent(
-//                state: viewModel.state,
-//                isError: viewModel.isErrorState(),
-//                btnAction: viewModel.getBreweriesListWithError,
-//                navigateToBreweryDetails: component.navigateBreweryDetails
-//            )
-//            }
             BreweriesListContent(
                 state: viewModel.state,
                 isError: viewModel.isErrorState(),
@@ -46,6 +37,8 @@ struct BreweriesListView : View {
 
 private struct BreweriesListContent : View {
     
+    
+    
     @State
     var state: CategoriesListState
     
@@ -59,11 +52,7 @@ private struct BreweriesListContent : View {
     var body: some View {
         VStack {
             List {
-                ForEach(state.categories, id: \.name) { brewery in
-                    BreweryItemView(brewery).onTapGesture {
-                        navigateToBreweryDetails(brewery.name ?? "")
-                    }
-                }
+              
             }
             .alert(isPresented: $isError, content: {
                 Alert(

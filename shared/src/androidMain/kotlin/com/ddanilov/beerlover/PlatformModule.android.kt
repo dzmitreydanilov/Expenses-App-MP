@@ -9,4 +9,19 @@ actual fun platformModule() = module {
     single {
         CategoriesListViewModel(get())
     }
+
+    single<ConnetcivityProviderHelper> {
+        ProviderHelper()
+    }
+}
+
+class ProviderHelper : ConnetcivityProviderHelper {
+    override fun registerListener(onNetworkAvailable: () -> Unit, onNetworkLost: () -> Unit) {
+        TODO("Not yet implemented")
+    }
+
+    override fun unregisterListener() {
+        TODO("Not yet implemented")
+    }
+
 }
