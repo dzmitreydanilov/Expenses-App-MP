@@ -11,53 +11,50 @@ import tasks.cinterop.SwiftKlibEntry
 const val EXTENSION_NAME = "MyKlib"
 
 class SwiftKlibPlugin : Plugin<Project> {
-    override fun apply(target: Project) {
-        with(target) {
+    override fun apply(target: Project) = with(target) {
+        val objects: ObjectFactory = project.objects
 
-            val objects: ObjectFactory = project.objects
-
-            val swiftKlibEntries: NamedDomainObjectContainer<SwiftKlibEntry> =
-                objects.domainObjectContainer(SwiftKlibEntry::class.java) { name ->
-                    objects.newInstance(SwiftKlibEntry::class.java, name)
-                }
-
-            project.extensions.add(EXTENSION_NAME, swiftKlibEntries)
-
-            println("XXX swiftKlibEntries ${swiftKlibEntries.size}")
-
-            swiftKlibEntries.forEach { entry ->
-                val name: String = entry.name
-                println("XXXX NAME $name")
-                val targetToTaskName = CompileTarget.values().associateWith {
-                    getTaskName(name, it)
-                }
-
-                targetToTaskName.entries.forEach { (target, taskName) ->
-                    tasks.register(
-                        taskName,
-                        CompileSwiftTask::class.java,
-                        name,
-                        target,
-                        entry.pathProperty,
-                        entry.packageNameProperty,
-                        entry.minIosProperty,
-                    )
-                }
+        val swiftKlibEntries: NamedDomainObjectContainer<SwiftKlibEntry> =
+            objects.domainObjectContainer(SwiftKlibEntry::class.java) { name ->
+                objects.newInstance(SwiftKlibEntry::class.java, name)
             }
 
-            tasks.withType(CInteropProcess::class.java).configureEach {
-                val cinteropTarget = CompileTarget.byKonanName(konanTarget.name)
-                    ?: return@configureEach
+        project.extensions.add(EXTENSION_NAME, swiftKlibEntries)
 
-                val taskName = getTaskName(interopName, cinteropTarget)
+        swiftKlibEntries.configureEach {
+            val name: String = name
 
-                val task = tasks.withType(CompileSwiftTask::class.java).findByName(taskName)
-                    ?: return@configureEach
-
-                println("XXXXXX DEF FILE ${task.defFile}")
-                settings.defFile = task.defFile
-                dependsOn(task)
+            val targetToTaskName = CompileTarget.values().associateWith {
+                getTaskName(name, it)
             }
+
+            targetToTaskName.entries.forEach { (target, taskName) ->
+                tasks.register(
+                    taskName,
+                    CompileSwiftTask::class.java,
+                    name,
+                    target,
+                    pathProperty,
+                    packageNameProperty,
+                    minIosProperty,
+                    minMacosProperty,
+                    minTvosProperty,
+                    minWatchosProperty,
+                )
+            }
+        }
+
+        tasks.withType(CInteropProcess::class.java).configureEach {
+            val cinteropTarget = CompileTarget.byKonanName(konanTarget.name)
+                ?: return@configureEach
+
+            val taskName = getTaskName(interopName, cinteropTarget)
+
+            val task = tasks.withType(CompileSwiftTask::class.java).findByName(taskName)
+                ?: return@configureEach
+
+            settings.defFile = task.defFile
+            dependsOn(task)
         }
     }
 }

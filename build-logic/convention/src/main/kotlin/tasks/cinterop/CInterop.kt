@@ -140,6 +140,7 @@ open class CompileSwiftTask @Inject constructor(
         "-Xswiftc",
         "-target",
         "-Xswiftc",
+        "${compileTarget.archPrefix()}-apple-${operatingSystem(compileTarget)}.0${compileTarget.simulatorSuffix()}",
     )
 
     /** Workaround for bug in toolchain where the sdk path (via `swiftc -sdk` flag) is not propagated to clang. */
@@ -224,11 +225,17 @@ open class CompileSwiftTask @Inject constructor(
     private fun operatingSystem(compileTarget: CompileTarget): String =
         when (compileTarget) {
             CompileTarget.iosX64, CompileTarget.iosArm64, CompileTarget.iosSimulatorArm64 -> "ios$minIos"
+            CompileTarget.watchosX64, CompileTarget.watchosArm64, CompileTarget.watchosSimulatorArm64 -> "watchos$minWatchos"
+            CompileTarget.tvosX64, CompileTarget.tvosArm64, CompileTarget.tvosSimulatorArm64 -> "tvos$minTvos"
+            CompileTarget.macosX64, CompileTarget.macosArm64 -> "macosx$minMacos"
         }
 
     private fun minOs(compileTarget: CompileTarget): Int =
         when (compileTarget) {
             CompileTarget.iosX64, CompileTarget.iosArm64, CompileTarget.iosSimulatorArm64 -> minIos
+            CompileTarget.watchosX64, CompileTarget.watchosArm64, CompileTarget.watchosSimulatorArm64 -> minWatchos
+            CompileTarget.tvosX64, CompileTarget.tvosArm64, CompileTarget.tvosSimulatorArm64 -> minTvos
+            CompileTarget.macosX64, CompileTarget.macosArm64 -> minMacos
         }
 }
 
@@ -239,6 +246,12 @@ private data class SwiftBuildResult(
 
 val SDKLESS_TARGETS = listOf(
     CompileTarget.iosArm64,
+    CompileTarget.watchosArm64,
+    CompileTarget.watchosX64,
+    CompileTarget.watchosSimulatorArm64,
+    CompileTarget.tvosArm64,
+    CompileTarget.tvosX64,
+    CompileTarget.tvosSimulatorArm64,
 )
 
 private fun File.create(content: String) {

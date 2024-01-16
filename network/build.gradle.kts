@@ -4,7 +4,6 @@ import org.jetbrains.kotlin.scripting.definitions.StandardScriptDefinition.platf
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     id("kmp.library")
-
     alias(libs.plugins.test.resources)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
@@ -89,6 +88,7 @@ kotlin {
     }
 }
 MyKlib {
+    println("Configuring MyKlib extension")
     create("KCrypto") {
         path = file("native/KCrypto")
         packageName("com.ttypic.objclibs.kcrypto")
