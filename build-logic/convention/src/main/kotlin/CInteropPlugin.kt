@@ -37,9 +37,6 @@ class SwiftKlibPlugin : Plugin<Project> {
                     pathProperty,
                     packageNameProperty,
                     minIosProperty,
-                    minMacosProperty,
-                    minTvosProperty,
-                    minWatchosProperty,
                 )
             }
         }
