@@ -15,5 +15,5 @@ actual fun platformModule() = module {
         FavoriteBreweryViewModel(get())
     }
 
-    single<ConnetcivityProviderHelper> { get<IosApplicationComponent>().networkHelper }
+    single<ConnetcivityProviderHelper> { TestClass() }
 }

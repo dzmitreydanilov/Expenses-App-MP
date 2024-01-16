@@ -12,7 +12,6 @@ class NetworkListener(private val helper: ConnetcivityProviderHelper) {
     val networkStatus: Flow<NetworkStatus> = callbackFlow {
         helper.registerListener(
             onNetworkAvailable = {
-
                 trySend(NetworkStatus.Connected)
             },
             onNetworkLost = {

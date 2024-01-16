@@ -8,12 +8,26 @@ plugins {
     alias(libs.plugins.test.resources)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
+    id("cinterop.lib")
 }
 
 kotlin {
-    android()
-    ios()
-    iosSimulatorArm64()
+    applyDefaultHierarchyTemplate()
+    androidTarget()
+
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.compilations {
+            val main by getting {
+                cinterops {
+                    create("KCrypto")
+                }
+            }
+        }
+    }
 
     sourceSets {
         val commonMain by getting {
@@ -74,6 +88,11 @@ kotlin {
         simulatorId.set("95681291-6F63-456C-B59D-F157A32BF45E")
     }
 }
-
+MyKlib {
+    create("KCrypto") {
+        path = file("native/KCrypto")
+        packageName("com.ttypic.objclibs.kcrypto")
+    }
+}
 
 android.namespace = "com.itransition.templates.kmp.network"

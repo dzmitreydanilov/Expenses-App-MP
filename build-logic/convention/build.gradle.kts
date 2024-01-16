@@ -53,5 +53,9 @@ gradlePlugin {
             id = "android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
+        register("swiftKlibPlugin") {
+            id = "cinterop.lib"
+            implementationClass = "SwiftKlibPlugin"
+        }
     }
 }

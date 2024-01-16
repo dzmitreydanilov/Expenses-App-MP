@@ -16,7 +16,7 @@ fun KoinApplication.Companion.start(
     return initKoin(
         networkLoggingEnabled = networkLoggingEnabled,
         platformModules = listOf(
-            module { single { appComponent } }
+//            module { single { appComponent } }
         ),
         appDeclaration = {}
     )
