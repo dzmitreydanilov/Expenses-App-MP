@@ -7,6 +7,6 @@ actual val firebaseAppModule = module {
     // TODO but it also works but not always =)
     // TODO investigate the issue
     single(createdAtStart = true) {
-        IosFirebaseAppWrapper().initFirebase()
+//        IosFirebaseAppWrapper().initFirebase()
     }
 }

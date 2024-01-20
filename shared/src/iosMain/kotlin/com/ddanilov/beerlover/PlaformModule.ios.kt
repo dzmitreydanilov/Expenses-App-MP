@@ -15,5 +15,5 @@ actual fun platformModule() = module {
         FavoriteBreweryViewModel(get())
     }
 
-    single<ConnetcivityProviderHelper> { TestClass() }
+    single<ConnectivityProviderHelper> { TestClass() }
 }

@@ -14,7 +14,7 @@ struct LazyKoin<T> {
 extension KoinApplication {
     static let shared = companion.start(
         networkLoggingEnabled: true,
-        appComponent: IosApplicationComponent(networkHelper: IosNetworkHelper()))
+        appComponent: IosApplicationComponent(networkHelper: IosNetworkHelperNew()))
     
     @discardableResult
     static func start() -> KoinApplication {

@@ -1,6 +1,6 @@
 package com.ddanilov.beerlover
 
-interface ConnetcivityProviderHelper {
+interface ConnectivityProviderHelper {
     fun registerListener(onNetworkAvailable: () -> Unit, onNetworkLost: () -> Unit)
     fun unregisterListener()
 }

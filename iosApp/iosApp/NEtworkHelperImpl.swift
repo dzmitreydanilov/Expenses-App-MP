@@ -10,7 +10,7 @@ import Foundation
 import Network
 import shared
 
-class IosNetworkHelper : ConnetcivityProviderHelper {
+class IosNetworkHelperNew : ConnetcivityProviderHelper {
     private let monitor: NWPathMonitor = NWPathMonitor()
 
     func registerListener(onNetworkAvailable: @escaping () -> Void, onNetworkLost: @escaping () -> Void) {
@@ -22,6 +22,10 @@ class IosNetworkHelper : ConnetcivityProviderHelper {
             }
         }
         monitor.start(queue: DispatchQueue.global(qos: .background))
+    }
+    
+    func doInitFB() {
+        "Ssdadasd"
     }
 
     func unregisterListener() {

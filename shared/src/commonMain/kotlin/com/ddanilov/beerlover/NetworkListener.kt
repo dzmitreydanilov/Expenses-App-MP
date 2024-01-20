@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flowOn
 
-class NetworkListener(private val helper: ConnetcivityProviderHelper) {
+class NetworkListener(private val helper: ConnectivityProviderHelper) {
     val networkStatus: Flow<NetworkStatus> = callbackFlow {
         helper.registerListener(
             onNetworkAvailable = {

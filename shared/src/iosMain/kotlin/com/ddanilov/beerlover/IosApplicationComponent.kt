@@ -3,11 +3,11 @@ package com.ddanilov.beerlover
 import com.danilov.network.Test
 import kotlinx.cinterop.ExperimentalForeignApi
 
-class IosApplicationComponent(val networkHelper: ConnetcivityProviderHelper)
+class IosApplicationComponent(val networkHelper: ConnectivityProviderHelper)
 
 @OptIn(ExperimentalForeignApi::class)
 
-class TestClass : ConnetcivityProviderHelper {
+class TestClass : ConnectivityProviderHelper {
 
     private val test = Test().helper
     override fun registerListener(onNetworkAvailable: () -> Unit, onNetworkLost: () -> Unit) {
@@ -17,5 +17,4 @@ class TestClass : ConnetcivityProviderHelper {
     override fun unregisterListener() {
         test?.unregisterListener()
     }
-
 }

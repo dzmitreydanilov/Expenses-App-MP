@@ -8,6 +8,8 @@ import com.arkivanov.decompose.router.slot.dismiss
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.LifecycleOwner
 import com.arkivanov.essenty.lifecycle.doOnDestroy
+import com.arkivanov.essenty.lifecycle.doOnPause
+import com.arkivanov.essenty.lifecycle.doOnResume
 import com.ddanilov.beerlover.NetworkListener
 import com.ddanilov.beerlover.decompose.expense.BreweryInfoComponent
 import com.ddanilov.beerlover.decompose.home.SlotConfig
@@ -45,10 +47,18 @@ class CategoriesListComponent(
             provider.getCategories()
         }
 
-        coroutineScope.launch {
-            connectivity.networkStatus.collect {
-                println("XXXXX CONNECTION STATUS: $it")
+        doOnResume {
+            coroutineScope.launch {
+                println("XXX COLLECT NETWORK STATUS")
+                connectivity.networkStatus.collect {
+                    println("XXXXX CONNECTION STATUS: $it")
+                }
             }
+        }
+
+        doOnPause {
+            println("XXX COLLECT NETWORK STATUS")
+
         }
     }
 

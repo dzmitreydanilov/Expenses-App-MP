@@ -10,16 +10,19 @@ actual fun platformModule() = module {
         CategoriesListViewModel(get())
     }
 
-    single<ConnetcivityProviderHelper> {
+    single<ConnectivityProviderHelper> {
         ProviderHelper()
     }
 }
 
-class ProviderHelper : ConnetcivityProviderHelper {
+class ProviderHelper : ConnectivityProviderHelper {
     override fun registerListener(onNetworkAvailable: () -> Unit, onNetworkLost: () -> Unit) {
 
     }
 
     override fun unregisterListener() {
+    }
+
+    override fun initFB() {
     }
 }

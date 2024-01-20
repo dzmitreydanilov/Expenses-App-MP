@@ -1,12 +1,11 @@
 package com.danilov.network
 
+import com.sandbox.kmp.cinterop.IosNetworkHelper
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.darwin.Darwin
-import com.ttypic.objclibs.kcrypto.IosNetworkHelper
 import kotlinx.cinterop.ExperimentalForeignApi
 
 actual val httpEngine: HttpClientEngine = Darwin.create()
-
 
 @OptIn(ExperimentalForeignApi::class)
 class Test {
@@ -15,5 +14,6 @@ class Test {
 
     init {
         helper = IosNetworkHelper()
+        helper?.callFirebase()
     }
 }

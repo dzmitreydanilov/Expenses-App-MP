@@ -8,9 +8,9 @@ import tasks.cinterop.CompileSwiftTask
 import tasks.cinterop.CompileTarget
 import tasks.cinterop.SwiftKlibEntry
 
-const val EXTENSION_NAME = "MyKlib"
+const val EXTENSION_NAME = "KLib"
 
-class SwiftKlibPlugin : Plugin<Project> {
+class KlibPlugin : Plugin<Project> {
     override fun apply(target: Project) = with(target) {
         val objects: ObjectFactory = project.objects
 

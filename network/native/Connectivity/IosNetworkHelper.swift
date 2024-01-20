@@ -1,10 +1,3 @@
-//
-//  KCrypto.swift
-//  ConnectivityProvider
-//
-//  Created by Dzmitrey Danilau on 15.01.24.
-//
-
 import Foundation
 import Network
 
