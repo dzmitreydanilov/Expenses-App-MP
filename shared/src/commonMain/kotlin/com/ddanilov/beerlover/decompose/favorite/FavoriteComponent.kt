@@ -6,8 +6,7 @@ import org.koin.core.scope.Scope
 
 class FavoriteComponent(
     componentContext: AppComponentContext
-) : Favorite,
-    AppComponentContext by componentContext {
+) : Favorite, AppComponentContext by componentContext {
 
     override val scope: Scope = createKoinScopeForCurrentLifecycle(this)
 }

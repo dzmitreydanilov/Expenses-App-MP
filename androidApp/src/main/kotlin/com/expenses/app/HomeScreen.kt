@@ -43,9 +43,9 @@ fun HomeScreen(component: HomeComponent, modifier: Modifier = Modifier) {
                 modifier = Modifier.weight(1f)
             ) {
                 when (val child = it.instance) {
-                    is Home.Child.Breweries -> BreweriesList(component = child.component)
+                    is Home.Child.CategoriesList -> CategoriesList(component = child.component)
                     is Home.Child.Favorites -> FavoriteScreen(component = child.component)
-                    is Home.Child.BreweryDetails -> {}
+                    is Home.Child.CategoryInfo -> {}
                 }
             }
             BottomNavigation(activeComponent = activeComponent, component = component)
@@ -61,7 +61,7 @@ private fun BottomNavigation(
 ) {
     BottomAppBar(modifier = modifier) {
         NavigationBarItem(
-            selected = activeComponent is Home.Child.Breweries,
+            selected = activeComponent is Home.Child.CategoriesList,
             onClick = { component.onTabClick(Home.Tab.ExpensesHome) },
             icon = {
                 Icon(

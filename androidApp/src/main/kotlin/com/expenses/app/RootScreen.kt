@@ -51,6 +51,7 @@ fun RootScreen(
             ) {
                 when (val child = it.instance) {
                     is Root.Child.Home -> HomeScreen(component = child.component)
+                    is Root.Child.Settings -> throw Exception("IN dev")
                 }
             }
         }

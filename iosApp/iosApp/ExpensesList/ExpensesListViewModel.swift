@@ -4,46 +4,23 @@ import shared
 
 class ExpensesListViewModel : ObservableObject {
         
-    let viewmodel: CategoriesListViewModel = KoinApplication.inject()
-    private let networkStatus: NetworkListener = KoinApplication.inject()
+    private let component: CategoryList
     
     @Published
-    private(set) var state: CategoriesListState = .Initial.shared
+    private(set) var state: CategoriesState = Loading.shared
+    
+    init(_ compoment: CategoryList) {
+        self.component = compoment
+    }
 
     @MainActor
     func activate() async {
-        for await state in viewmodel.breweriesState {
+        for await state in component.state {
             self.state = state
         }
     }
     
-    func isErrorState() -> Bool {
-        return self.state is CategoriesListState.Error
-    }
-    
-    // Just call func, that under the hood starts coroutines, for example listening for live updates
-    func collectLiveUpdates() {
-        viewmodel.collectLiveUpdates()
-    }
-    
-    func refreshBrewerylist(){
-        viewmodel.getBreweriesList()
-    }
-    
-    func getBreweriesList() {
-        viewmodel.getBreweriesList()
-    }
-    
-    func getBreweriesListWithError() {
-        viewmodel.getBreweriesListWithError()
-    }
-    
-    func getNetworkStatus() {
-        let status =  networkStatus.networkStatus
-        print(String(describing: type(of: status)))
-    }
-    
-    deinit {
-//        self.viewmodel.clear()
+    func navigateToCategoryInfo(_ id: String) {
+        component.navigateToCategoryInfo(id: id)
     }
 }

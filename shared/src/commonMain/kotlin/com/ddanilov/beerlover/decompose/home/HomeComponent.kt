@@ -6,7 +6,7 @@ import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.router.stack.replaceCurrent
 import com.arkivanov.decompose.value.Value
-import com.ddanilov.beerlover.decompose.expenseslist.CategoriesListComponent
+import com.ddanilov.beerlover.decompose.categories.CategoriesListComponent
 import com.ddanilov.beerlover.decompose.favorite.FavoriteComponent
 import com.expenses.core.decompose.AppComponentContext
 import com.expenses.core.decompose.appChildStack
@@ -41,7 +41,7 @@ class HomeComponent(
     ): Home.Child {
         return when (config) {
             is HomeScreenConfig.CategoriesList -> {
-                Home.Child.Breweries(
+                Home.Child.CategoriesList(
                     CategoriesListComponent(
                         componentContext = componentContext,
                         onNavigateCategory = ::navigateBreweryDetails
@@ -56,7 +56,7 @@ class HomeComponent(
             }
 
             is HomeScreenConfig.Details -> {
-                Home.Child.BreweryDetails(config.id)
+                Home.Child.CategoryInfo(config.id)
             }
         }
     }

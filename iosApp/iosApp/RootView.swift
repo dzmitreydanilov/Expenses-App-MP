@@ -3,7 +3,7 @@ import Combine
 import SwiftUI
 import shared
 
-struct BreweriesApp : View {
+struct RootView : View {
     
     let component: RootComponent
     

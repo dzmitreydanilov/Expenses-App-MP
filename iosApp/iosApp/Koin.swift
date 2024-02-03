@@ -42,12 +42,10 @@ extension KoinApplication {
 extension KoinApplication {
     
     private static let apiServicePath: [PartialKeyPath<Koin>] = [
-        \.breweriesListApiService,
+        
     ]
     
     private static let viewModelsPath: [PartialKeyPath<Koin>] = [
-        \.breweriesViewModel,
-         \.favoriteBreweryViewModel,
          \.networkStatus,
     ]
 }

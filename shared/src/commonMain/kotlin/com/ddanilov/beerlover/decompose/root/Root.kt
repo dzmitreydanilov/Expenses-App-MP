@@ -10,5 +10,8 @@ interface Root {
 
     sealed interface Child {
         data class Home(val component: HomeComponent) : Child
+        data class Settings(
+            val component: com.ddanilov.beerlover.decompose.settings.Settings
+        ) : Child
     }
 }

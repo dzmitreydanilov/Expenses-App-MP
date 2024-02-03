@@ -2,32 +2,21 @@ import Foundation
 import SwiftUI
 import shared
 
-struct BreweriesListView : View {
+struct ExpensesListView : View {
     
-    @ObservedObject
-    var viewModel: ExpensesListViewModel
-    
-    let component: CategoryList
-    
+    private let viewModel: ExpensesListViewModel
+        
     init(_ component: CategoryList) {
-        self.viewModel = ExpensesListViewModel()
-        self.component = component
+        self.viewModel = ExpensesListViewModel(component)
     }
     
     var body: some View {
         VStack {
-            BreweriesListContent(
+            ExpensesListContent(
                 state: viewModel.state,
-                isError: viewModel.isErrorState(),
-                btnAction: viewModel.getNetworkStatus,
-                navigateToBreweryDetails: component.navigateBreweryDetails
+                isError: false,
+                navigateToBreweryDetails: viewModel.navigateToCategoryInfo
             )
-        }.refreshable {
-            viewModel.refreshBrewerylist()
-        }
-        .onAppear {
-            viewModel.getBreweriesList()
-            viewModel.collectLiveUpdates()
         }
         .task {
             await viewModel.activate()
@@ -35,17 +24,13 @@ struct BreweriesListView : View {
     }
 }
 
-private struct BreweriesListContent : View {
-    
-    
+private struct ExpensesListContent : View {
     
     @State
-    var state: CategoriesListState
+    var state: CategoriesState
     
     @State
     var isError: Bool
-    
-    let btnAction: () -> Void
     
     let navigateToBreweryDetails: (String) -> Void
     
@@ -61,32 +46,6 @@ private struct BreweriesListContent : View {
                     dismissButton: .default(Text("OK"))
                 )
             })
-            
-            HStack(
-                content: {
-                    Button(
-                        action: {
-                            btnAction()
-                        },
-                        label: { Text("Generate Error State") }
-                    )
-                }
-            )
-        }
-    }
-}
-
-private struct BreweryItemView : View {
-    
-    let breweryItem: Brewery
-    
-    init(_ brewery: Brewery) {
-        self.breweryItem = brewery
-    }
-    
-    var body: some View {
-        HStack {
-            Text(breweryItem.name ?? "")
         }
     }
 }

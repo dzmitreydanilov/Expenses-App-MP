@@ -22,9 +22,9 @@ struct HomeView : View {
             
             HStack(alignment: .bottom, spacing: 120) {
                 BottomTabView(
-                    title: "Breweries",
+                    title: "Categories",
                     systemImage: "building",
-                    isActive: child is HomeChild.Breweries,
+                    isActive: child is HomeChild.CategoriesList,
                     action: {
                         component.onTabClick(tabs: HomeTab.expensesHome)
                     }
@@ -45,9 +45,8 @@ private struct ChildView: View {
     
     var body: some View {
         switch child {
-        case let child as HomeChild.Breweries: BreweriesListView(child.component)
-        case let child as HomeChild.Favorites: FavoriteView()
-        case let child as HomeChild.BreweryDetails: BreweryDetailsView(child.id)
+        case let child as HomeChild.CategoriesList: ExpensesListView(child.component)
+        case let child as HomeChild.CategoryInfo: CategoryInfoView(child.id)
         default: EmptyView()
         }
     }

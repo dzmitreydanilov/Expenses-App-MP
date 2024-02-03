@@ -4,6 +4,7 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.value.Value
 import com.ddanilov.beerlover.decompose.home.HomeComponent
+import com.ddanilov.beerlover.decompose.settings.SettingsComponent
 import com.expenses.core.decompose.AppComponentContext
 import com.expenses.core.decompose.appChildStack
 import kotlinx.serialization.Serializable
@@ -32,6 +33,12 @@ class RootComponent(
                     HomeComponent(componentContext = componentContext)
                 )
             }
+
+            is RootScreenConfig.Settings -> {
+                Root.Child.Settings(
+                    SettingsComponent(componentContext = componentContext)
+                )
+            }
         }
     }
 }
@@ -41,4 +48,7 @@ private sealed interface RootScreenConfig {
 
     @Serializable
     data object Home : RootScreenConfig
+
+    @Serializable
+    data object Settings : RootScreenConfig
 }

@@ -1,6 +1,6 @@
 package com.ddanilov.beerlover.decompose.expense
 
-interface BreweryInfo {
+interface CategoryInfo {
 
     fun onDismiss()
 }

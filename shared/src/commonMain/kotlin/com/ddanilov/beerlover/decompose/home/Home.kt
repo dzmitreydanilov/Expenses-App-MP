@@ -2,7 +2,7 @@ package com.ddanilov.beerlover.decompose.home
 
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
-import com.ddanilov.beerlover.decompose.expenseslist.CategoryList
+import com.ddanilov.beerlover.decompose.categories.CategoryList
 import com.ddanilov.beerlover.decompose.favorite.Favorite
 
 interface Home {
@@ -12,15 +12,15 @@ interface Home {
     fun onTabClick(tabs: Tab)
 
     enum class Tab {
-        ExpensesHome, Favorite
+        ExpensesHome,
+        Favorite
     }
 
     fun onBackClicked()
 
     sealed class Child {
-        class Breweries(val component: CategoryList) : Child()
-
+        class CategoriesList(val component: CategoryList) : Child()
         class Favorites(val component: Favorite) : Child()
-        class BreweryDetails(val id: String) : Child()
+        class CategoryInfo(val id: String) : Child()
     }
 }

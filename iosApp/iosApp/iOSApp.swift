@@ -11,7 +11,7 @@ struct iOSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            BreweriesApp(rootHolder.root)
+            RootView(rootHolder.root)
                 .onChange(of: scenePhase) { newPhase in
                     switch newPhase {
                     case .background: LifecycleRegistryExtKt.stop(rootHolder.lifecycle)

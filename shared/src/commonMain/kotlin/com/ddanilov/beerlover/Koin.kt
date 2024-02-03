@@ -1,5 +1,6 @@
 package com.ddanilov.beerlover
 
+import com.ddanilov.beerlover.decompose.categories.SharedImpl
 import com.expenses.app.firebase.impl.FirestoreFeatureImpl
 import com.expenses.app.firebase.impl.firebaseAppModule
 import com.expenses.category.CategoryImpl
@@ -23,8 +24,6 @@ fun initKoin(
             platformModules +
                     listOf(
                         networkModule(networkLoggingEnabled),
-                        apiServicesModule,
-                        repositoryModule(),
                         platformModule(),
                         firebaseAppModule,
                         module {
@@ -44,13 +43,14 @@ private fun createMap(): Map<Qualifier, FeatureImpl> {
 }
 
 
-//// TODO enable/disable network logging for debug/release builds depends on build type
-//// called by iOS
-//fun KoinApplication.Companion.start(networkLoggingEnabled: Boolean = false): KoinApplication {
-//    return initKoin(networkLoggingEnabled = networkLoggingEnabled) {}
-//}
+// TODO enable/disable network logging for debug/release builds depends on build type
+// called by iOS
+fun KoinApplication.Companion.start(networkLoggingEnabled: Boolean = false): KoinApplication {
+    return initKoin(networkLoggingEnabled = networkLoggingEnabled) {}
+}
 
 private val featureImpl = listOf(
     FirestoreFeatureImpl,
-    CategoryImpl
+    CategoryImpl,
+    SharedImpl
 )

@@ -14,7 +14,6 @@ fun LifecycleOwner.createKoinScopeForCurrentLifecycle(owner: LifecycleOwner): Sc
     val scope = KoinPlatform.getKoin().getOrCreateScope(getScopeId(), getScopeName(), this)
     scope.registerCallback(object : ScopeCallback {
         override fun onScopeClose(scope: Scope) {
-            println("XXXXX onScopeClose")
             (owner as DecomposeKoinScopeComponent).onCloseScope()
         }
     })
