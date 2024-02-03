@@ -10,7 +10,7 @@ class FirestoreStorage : Firestore {
     private val firestore = Firebase.firestore
 
     override suspend fun getCategories(): List<Category> {
-        val items = firestore.collection("/DEFAULT_TYPE").get()
+        val items = firestore.collection("/Categories").get()
         val result: List<Category> = items.documents.map {
             it.data()
         }

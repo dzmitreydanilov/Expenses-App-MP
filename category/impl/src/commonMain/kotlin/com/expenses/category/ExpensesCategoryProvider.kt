@@ -9,7 +9,6 @@ class ExpensesCategoryProvider(private val firestore: Firestore) : ExpensesCateg
 
     override suspend fun getCategories(): List<CategoryApplication> {
         val categories = firestore.getCategories()
-
         return categories.toApplicationModels()
     }
 }
@@ -18,7 +17,9 @@ class ExpensesCategoryProvider(private val firestore: Firestore) : ExpensesCateg
 private fun List<Category>.toApplicationModels(): List<CategoryApplication> {
     return map { category ->
         CategoryApplication(
-            id = category.id
+            id = category.id,
+            name = category.name,
+            description = category.description
         )
     }
 }

@@ -9,12 +9,10 @@ import com.arkivanov.decompose.value.Value
 import com.ddanilov.beerlover.decompose.expense.CategoryInfoComponent
 import com.ddanilov.beerlover.decompose.home.SlotConfig
 import com.ddanilov.beerlover.inject
-import com.expenses.api.CategoryApi
 import com.expenses.core.decompose.AppComponentContext
 import com.expenses.core.decompose.createKoinScopeForCurrentLifecycle
 import com.expenses.core.di.getFeatureApiManager
 import kotlinx.coroutines.flow.StateFlow
-import org.koin.core.component.KoinComponent
 import org.koin.mp.KoinPlatform.getKoin
 
 class CategoriesListComponent(

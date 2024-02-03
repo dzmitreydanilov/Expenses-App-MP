@@ -15,20 +15,13 @@ kotlin {
         iosX64(),
         iosArm64(),
         iosSimulatorArm64()
-    ).forEach {
-        it.binaries.framework {
-            baseName = "api"
-            isStatic = true
-        }
-    }
+    )
 
     sourceSets {
         commonMain.dependencies {
             implementation(libs.koin.core)
             implementation(project(":core"))
             implementation(project(":firebase:api"))
-        }
-        commonTest.dependencies {
         }
     }
 }

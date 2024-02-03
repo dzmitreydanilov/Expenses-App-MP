@@ -4,22 +4,25 @@ import shared
 
 struct ExpensesListView : View {
     
-    private let viewModel: ExpensesListViewModel
-        
+    @ObservedObject
+    private var viewModel: ExpensesListViewModel
+    
     init(_ component: CategoryList) {
         self.viewModel = ExpensesListViewModel(component)
     }
     
     var body: some View {
         VStack {
-            ExpensesListContent(
-                state: viewModel.state,
-                isError: false,
-                navigateToBreweryDetails: viewModel.navigateToCategoryInfo
-            )
-        }
-        .task {
-            await viewModel.activate()
+            VStack {
+                switch viewModel.state {
+                case  _ as CategoriesState.Loading: ProgressView()
+                case let state as CategoriesState.Loaded: ExpensesListContent(categories: state)
+                default: EmptyView()
+                }
+            }
+            .task {
+                await viewModel.activate()
+            }
         }
     }
 }
@@ -27,25 +30,25 @@ struct ExpensesListView : View {
 private struct ExpensesListContent : View {
     
     @State
-    var state: CategoriesState
-    
-    @State
-    var isError: Bool
-    
-    let navigateToBreweryDetails: (String) -> Void
+    var categories: CategoriesState
     
     var body: some View {
-        VStack {
-            List {
-              
+        List {
+            ForEach(categories.items, id: \.id) { category in
+                CategoryView(category: category)
             }
-            .alert(isPresented: $isError, content: {
-                Alert(
-                    title: Text("Error"),
-                    message: Text("Something happaned"),
-                    dismissButton: .default(Text("OK"))
-                )
-            })
+        }
+    }
+}
+
+
+struct CategoryView: View {
+    var category: CategoryApplication
+
+    var body: some View {
+        VStack{
+            Text(category.name)
+            Text(category.description_)
         }
     }
 }

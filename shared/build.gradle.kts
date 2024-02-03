@@ -28,6 +28,7 @@ kotlin {
             export(libs.decompose)
             export(libs.essenty)
             export(project(":core"))
+            export(project(":category:api"))
         }
     }
 
@@ -40,6 +41,7 @@ kotlin {
                 implementation(project(":firebase:impl"))
                 implementation(project(":category:impl"))
                 api(project(":core"))
+                api(project(":category:api"))
             }
         }
         androidMain {

@@ -7,7 +7,7 @@ class ExpensesListViewModel : ObservableObject {
     private let component: CategoryList
     
     @Published
-    private(set) var state: CategoriesState = Loading.shared
+    private(set) var state: CategoriesState = .Initial.shared
     
     init(_ compoment: CategoryList) {
         self.component = compoment

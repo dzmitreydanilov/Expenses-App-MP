@@ -5,4 +5,8 @@ interface ExpensesCategory {
     suspend fun getCategories(): List<CategoryApplication>
 }
 
-data class CategoryApplication(val id: String)
+data class CategoryApplication(
+    val id: String,
+    val name: String,
+    val description: String
+)
