@@ -22,7 +22,4 @@ class ProviderHelper : ConnectivityProviderHelper {
 
     override fun unregisterListener() {
     }
-
-    override fun initFB() {
-    }
 }

@@ -28,7 +28,7 @@ fun initKoin(
                         platformModule(),
                         firebaseAppModule,
                         module {
-                            single(createdAtStart = true) { NetworkListener(get()) }
+                            single { NetworkListener(get()) }
                         },
                         module {
                             single(FeatureApiManager.FEATURE_MAP_QUALIFIER) { createMap() }

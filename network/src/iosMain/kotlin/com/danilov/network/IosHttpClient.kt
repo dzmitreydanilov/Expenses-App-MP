@@ -1,6 +1,6 @@
 package com.danilov.network
 
-import com.sandbox.kmp.cinterop.IosNetworkHelper
+import com.network.cinterop.IosNetworkHelper
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.darwin.Darwin
 import kotlinx.cinterop.ExperimentalForeignApi
@@ -14,6 +14,5 @@ class Test {
 
     init {
         helper = IosNetworkHelper()
-        helper?.callFirebase()
     }
 }

@@ -46,20 +46,6 @@ class CategoriesListComponent(
         coroutineScope.launch {
             provider.getCategories()
         }
-
-        doOnResume {
-            coroutineScope.launch {
-                println("XXX COLLECT NETWORK STATUS")
-                connectivity.networkStatus.collect {
-                    println("XXXXX CONNECTION STATUS: $it")
-                }
-            }
-        }
-
-        doOnPause {
-            println("XXX COLLECT NETWORK STATUS")
-
-        }
     }
 
     private val slotNavigation = SlotNavigation<SlotConfig>()

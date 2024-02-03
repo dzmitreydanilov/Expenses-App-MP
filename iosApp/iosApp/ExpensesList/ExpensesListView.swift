@@ -19,7 +19,7 @@ struct BreweriesListView : View {
             BreweriesListContent(
                 state: viewModel.state,
                 isError: viewModel.isErrorState(),
-                btnAction: viewModel.getBreweriesListWithError,
+                btnAction: viewModel.getNetworkStatus,
                 navigateToBreweryDetails: component.navigateBreweryDetails
             )
         }.refreshable {

@@ -5,6 +5,7 @@ import shared
 class ExpensesListViewModel : ObservableObject {
         
     let viewmodel: CategoriesListViewModel = KoinApplication.inject()
+    private let networkStatus: NetworkListener = KoinApplication.inject()
     
     @Published
     private(set) var state: CategoriesListState = .Initial.shared
@@ -35,6 +36,11 @@ class ExpensesListViewModel : ObservableObject {
     
     func getBreweriesListWithError() {
         viewmodel.getBreweriesListWithError()
+    }
+    
+    func getNetworkStatus() {
+        let status =  networkStatus.networkStatus
+        print(String(describing: type(of: status)))
     }
     
     deinit {

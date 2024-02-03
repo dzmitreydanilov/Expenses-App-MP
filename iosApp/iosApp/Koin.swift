@@ -13,8 +13,7 @@ struct LazyKoin<T> {
 
 extension KoinApplication {
     static let shared = companion.start(
-        networkLoggingEnabled: true,
-        appComponent: IosApplicationComponent(networkHelper: IosNetworkHelperNew()))
+        networkLoggingEnabled: true)
     
     @discardableResult
     static func start() -> KoinApplication {
@@ -49,6 +48,6 @@ extension KoinApplication {
     private static let viewModelsPath: [PartialKeyPath<Koin>] = [
         \.breweriesViewModel,
          \.favoriteBreweryViewModel,
-//         \.connect,
+         \.networkStatus,
     ]
 }

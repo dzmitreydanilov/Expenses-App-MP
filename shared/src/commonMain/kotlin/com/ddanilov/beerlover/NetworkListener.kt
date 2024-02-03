@@ -1,26 +1,30 @@
 package com.ddanilov.beerlover
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.IO
-import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
-class NetworkListener(private val helper: ConnectivityProviderHelper) {
-    val networkStatus: Flow<NetworkStatus> = callbackFlow {
-        helper.registerListener(
-            onNetworkAvailable = {
-                trySend(NetworkStatus.Connected)
-            },
-            onNetworkLost = {
-                trySend(NetworkStatus.NotConnected)
-            }
+class NetworkListener(private val listener: ConnectivityProviderHelper) {
+
+    private val _networkStatus: MutableStateFlow<NetworkStatus> =
+        MutableStateFlow(NetworkStatus.NotConnected)
+    val networkStatus: NetworkStatus = _networkStatus.value
+
+    init {
+        startListening()
+    }
+
+    private fun startListening() {
+        listener.registerListener(
+            onNetworkAvailable = { updateNetworkStatus(NetworkStatus.Connected) },
+            onNetworkLost = { updateNetworkStatus(NetworkStatus.NotConnected) }
         )
+    }
 
-        awaitClose {
-            helper.unregisterListener()
-        }
-    }.distinctUntilChanged().flowOn(Dispatchers.IO)
+    private fun updateNetworkStatus(status: NetworkStatus) {
+        _networkStatus.value = status
+    }
+
+    fun unregisterListener() {
+        listener.unregisterListener()
+    }
 }

@@ -11,7 +11,6 @@ import org.koin.dsl.module
 // called by iOS
 fun KoinApplication.Companion.start(
     networkLoggingEnabled: Boolean = false,
-    appComponent: IosApplicationComponent
 ): KoinApplication {
     return initKoin(
         networkLoggingEnabled = networkLoggingEnabled,
@@ -27,5 +26,7 @@ val Koin.breweriesListApiService: BreweriesListApiService
 val Koin.breweriesViewModel: CategoriesListViewModel
     get() = get()
 val Koin.favoriteBreweryViewModel: FavoriteBreweryViewModel
+    get() = get()
+val Koin.networkStatus: NetworkListener
     get() = get()
 
